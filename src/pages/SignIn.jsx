@@ -1,19 +1,24 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { API_USER_SIGN_IN } from '../core/endpoints/endpoints';
+import { useAuth } from '../core/hooks/useAuth';
 import { useFetch } from '../core/hooks/useFetch';
 
 const SignIn = () => {
    const [user, setUser] = React.useState({ username: '', password: '' });
 
    const { loading, fetchData } = useFetch({ url: API_USER_SIGN_IN, method: 'Post' });
+   const { setToken } = useAuth();
+   const { push } = useHistory();
 
    function handleSignIn(event) {
       event.preventDefault();
 
       if (user.username && user.password) {
-         fetchData({ body: user });
+         fetchData({ body: user })
+            .then((token) => setToken(token))
+            .then(() => push('/'));
       }
    }
 

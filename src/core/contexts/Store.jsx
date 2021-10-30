@@ -18,7 +18,7 @@ function storeReducer(state, action) {
 const StoreProvider = ({ children }) => {
    const [state, dispatch] = React.useReducer(storeReducer, initialState);
 
-   return <StoreContext.Provider value={{ state, dispatch }}>{{ children }}</StoreContext.Provider>;
+   return <StoreContext.Provider value={{ state, dispatch }}>{children}</StoreContext.Provider>;
 };
 
 export { StoreContext, StoreProvider };

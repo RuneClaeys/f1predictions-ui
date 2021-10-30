@@ -1,25 +1,43 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const initialState = {
    user: null,
    token: '',
 };
 
-const StoreContext = React.createContext();
+const AuthContext = React.createContext();
 
-function storeReducer(state, action) {
+function authReducer(state, action) {
    switch (action.type) {
-      case 'SET_GRAND_PRIXES':
-         return { ...state, grandPrixes: action.payload };
+      case 'SET_BEARER_TOKEN':
+         return { ...state, token: action.payload };
       default:
          return state;
    }
 }
 
-const StoreProvider = ({ children }) => {
-   const [state, dispatch] = React.useReducer(storeReducer, initialState);
+const AuthProvider = ({ children }) => {
+   const [state, dispatch] = React.useReducer(authReducer, initialState);
+   const { push } = useHistory();
 
-   return <StoreContext.Provider value={{ state, dispatch }}>{{ children }}</StoreContext.Provider>;
+   const checkAuth = React.useCallback(() => {
+      const token = localStorage.getItem('bearerToken');
+
+      if (!token) return push('/signin');
+      dispatch({ type: 'SET_BEARER_TOKEN', payload: token });
+   }, []);
+
+   const setToken = React.useCallback((token) => {
+      localStorage.setItem('bearerToken', token);
+      dispatch({ type: 'SET_BEARER_TOKEN', payload: token });
+   }, []);
+
+   React.useEffect(() => {
+      checkAuth();
+   }, [checkAuth]);
+
+   return <AuthContext.Provider value={{ state, dispatch, checkAuth, setToken }}>{children}</AuthContext.Provider>;
 };
 
-export { StoreContext, StoreProvider };
+export { AuthContext, AuthProvider };
