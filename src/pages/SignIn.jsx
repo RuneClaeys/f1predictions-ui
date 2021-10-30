@@ -5,27 +5,27 @@ import { API_USER_SIGN_IN } from '../core/endpoints/endpoints';
 import { useFetch } from '../core/hooks/useFetch';
 
 const SignIn = () => {
-   const [user, setUser] = React.useState({ email: '', password: '' });
+   const [user, setUser] = React.useState({ username: '', password: '' });
 
    const { loading, fetchData } = useFetch({ url: API_USER_SIGN_IN, method: 'Post' });
 
    function handleSignIn(event) {
       event.preventDefault();
 
-      if (user.email && user.password) {
+      if (user.username && user.password) {
          fetchData({ body: user });
       }
    }
 
    return (
       <Form onSubmit={handleSignIn}>
-         <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+         <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Label>Username or Email</Form.Label>
             <Form.Control
-               value={user.email}
+               value={user.username}
                disabled={loading}
                placeholder="Enter email or username"
-               onChange={(e) => setUser({ ...user, email: e.target.value })}
+               onChange={(e) => setUser({ ...user, username: e.target.value })}
             />
          </Form.Group>
 
