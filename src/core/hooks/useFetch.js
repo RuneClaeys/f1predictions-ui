@@ -13,6 +13,9 @@ export function useFetch({ url, method = 'GET', initialFetch = false }) {
             ...fetchOptions,
             method,
             body: fetchOptions.body ? JSON.stringify(fetchOptions.body) : undefined,
+            headers: {
+               'Content-Type': 'application/json',
+            },
          })
             .then((response) => response.json())
             .then((json) => {
