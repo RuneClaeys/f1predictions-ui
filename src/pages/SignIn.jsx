@@ -3,22 +3,30 @@ import { Button, Form } from 'react-bootstrap';
 import { NavLink, useHistory } from 'react-router-dom';
 import { API_USER_SIGN_IN } from '../core/endpoints/endpoints';
 import { useAuth } from '../core/hooks/useAuth';
-import { useFetch } from '../core/hooks/useFetch';
 
 const SignIn = () => {
    const [user, setUser] = React.useState({ username: '', password: '' });
+   const [loading, setLoading] = React.useState(false);
 
-   const { loading, fetchData } = useFetch({ url: API_USER_SIGN_IN, method: 'Post' });
    const { setToken } = useAuth();
    const { push } = useHistory();
 
-   function handleSignIn(event) {
+   async function handleSignIn(event) {
       event.preventDefault();
 
       if (user.username && user.password) {
-         fetchData({ body: user })
-            .then((token) => setToken(token))
-            .then(() => push('/'));
+         setLoading(true);
+         await fetch(`${import.meta.env.VITE_API_BASE_URL}${API_USER_SIGN_IN}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user),
+         })
+            .then(async (response) => await response.text())
+            .then((token) => {
+               setToken(token);
+               setLoading(false);
+               push('/');
+            });
       }
    }
 

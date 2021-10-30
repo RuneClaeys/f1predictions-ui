@@ -9,7 +9,7 @@ export function useFetch({ url, method = 'GET', initialFetch = false }) {
       async (fetchOptions) => {
          setLoading(true);
 
-         await fetch(`${import.meta.env.VITE_API_BASE_URL}${url}`, {
+         return await fetch(`${import.meta.env.VITE_API_BASE_URL}${url}`, {
             ...fetchOptions,
             method,
             body: fetchOptions.body ? JSON.stringify(fetchOptions.body) : undefined,
@@ -17,10 +17,10 @@ export function useFetch({ url, method = 'GET', initialFetch = false }) {
                'Content-Type': 'application/json',
             },
          })
-            .then((response) => response.json())
-            .then((json) => {
-               setData(json);
-               return json;
+            .then(async (response) => await response.json())
+            .then((response) => {
+               setData(response);
+               return response;
             })
             .catch((ex) => setError(ex))
             .finally(() => setLoading(false));
