@@ -4,15 +4,15 @@ import Home from './pages/Home';
 
 const App = () => {
    return (
-      <Stack gap={3} className="view">
-         <Navbar bg="dark" variant="dark">
+      <Stack gap={3} style={{ maxHeight: '100vh' }} className="view overflow-auto ">
+         <Navbar className="sticky-top" bg="primary" variant="dark">
             <Container>
                <Navbar.Brand href="#home">
                   <span>Formula 1 predictions</span>
                </Navbar.Brand>
             </Container>
          </Navbar>
-         <Container>
+         <Container className="pb-5">
             <Home />
          </Container>
       </Stack>
