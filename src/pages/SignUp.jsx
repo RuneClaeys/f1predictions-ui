@@ -111,7 +111,7 @@ const SignUp = () => {
                   <Form.Label>Confirm password</Form.Label>
                   <Form.Control
                      name="password_confirm"
-                     value={values.passowrdConfirm}
+                     value={values.password_confirm}
                      disabled={loading}
                      type="password"
                      placeholder="Repeat password"
