@@ -1,9 +1,10 @@
 import React from 'react';
 import { Container, Navbar, Stack } from 'react-bootstrap';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { AuthProvider } from './core/contexts/Auth';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
-import { AuthProvider } from './core/contexts/Auth';
+import SignUp from './pages/SignUp';
 
 const App = () => {
    return (
@@ -21,6 +22,7 @@ const App = () => {
                   <Switch>
                      <Route exact path="/" component={Home} />
                      <Route path="/signin" component={SignIn} />
+                     <Route path="/signup" component={SignUp} />
                   </Switch>
                </Container>
             </Stack>
