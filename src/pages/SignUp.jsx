@@ -21,7 +21,8 @@ const SignUp = () => {
       setLoading(true);
 
       await axios
-         .post(`${import.meta.env.VITE_API_BASE_URL}${API_USER_SIGN_UP}`, body, { headers: { 'Content-Type': 'application/json' } })
+         .create()
+         .post(`${import.meta.env.VITE_API_BASE_URL}${API_USER_SIGN_UP}`, body)
          .then((response) => response.data)
          .then((token) => {
             setToken(token);

@@ -19,6 +19,7 @@ const SignIn = () => {
       setLoading(true);
 
       await axios
+         .create()
          .post(`${import.meta.env.VITE_API_BASE_URL}${API_USER_SIGN_IN}`, user)
          .then((response) => response.data)
          .then((token) => {

@@ -1,7 +1,16 @@
 import React from 'react';
 import { Button, Card, ListGroup, Stack, Badge, Row, Col } from 'react-bootstrap';
+import { API_GRAND_PRIX } from '../core/endpoints/endpoints';
+import { useGet } from '../core/hooks/useGet';
+import { format } from 'date-fns';
 
 const Home = () => {
+   const { data: grandPrix, loading: loadingGrandPrix } = useGet(API_GRAND_PRIX, { initialValue: [] });
+
+   if (loadingGrandPrix) {
+      return <div>loading...</div>;
+   }
+
    return (
       <Stack gap={3}>
          <Card>
@@ -38,19 +47,19 @@ const Home = () => {
          </Card>
 
          <ListGroup as="ol" reversed>
-            {[...Array(10)].map((_, i) => {
+            {grandPrix.map((grandPrix) => {
                return (
-                  <ListGroup.Item key={i} as="li" className="d-flex justify-content-between align-items-start">
+                  <ListGroup.Item key={grandPrix.id} as="li" className="d-flex justify-content-between align-items-start">
                      <Row className="w-100">
                         <Col className="d-flex align-items-center" xs={2}>
-                           <strong>18</strong>
+                           <strong>TODO</strong>
                         </Col>
                         <Col xs={8}>
-                           <h6 className="p-0 mb-1">United States GP</h6>
-                           <p className="m-0">Sun 7 Nov</p>
+                           <h6 className="p-0 mb-1">{grandPrix.name}</h6>
+                           <p className="m-0">{format(new Date(grandPrix.qualifying_start_timestamp), 'dd/MM HH:mm')}</p>
                         </Col>
                         <Col xs={2} className="d-flex align-items-center" xs={2}>
-                           222
+                           TODO
                         </Col>
                      </Row>
                   </ListGroup.Item>
