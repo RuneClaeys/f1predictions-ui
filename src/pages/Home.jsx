@@ -15,17 +15,19 @@ const Home = () => {
       <Stack gap={3}>
          <Card>
             <Card.Body>
-               <Card.Title>Mexican GP</Card.Title>
+               TODO
+               {/* <Card.Title>Mexican GP</Card.Title>
                <Card.Text>
                   Next up is the Mexican GP, who's going to win? Submit your predictions before <strong>06/11 12:00</strong>!
                </Card.Text>
-               <Button variant="primary">Enter predictions</Button>
+               <Button variant="primary">Enter predictions</Button> */}
             </Card.Body>
          </Card>
 
          <Card>
             <Card.Body>
-               <Row>
+               TODO
+               {/* <Row>
                   <Col className="text-center d-flex flex-column">
                      <strong>Quali</strong>
                      <span>100</span>
@@ -42,7 +44,7 @@ const Home = () => {
                      <strong>Total</strong>
                      <span>263</span>
                   </Col>
-               </Row>
+               </Row> */}
             </Card.Body>
          </Card>
 
