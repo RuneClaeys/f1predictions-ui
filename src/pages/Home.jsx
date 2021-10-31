@@ -15,19 +15,17 @@ const Home = () => {
       <Stack gap={3}>
          <Card>
             <Card.Body>
-               TODO
-               {/* <Card.Title>Mexican GP</Card.Title>
+               <Card.Title>Mexican GP</Card.Title>
                <Card.Text>
                   Next up is the Mexican GP, who's going to win? Submit your predictions before <strong>06/11 12:00</strong>!
                </Card.Text>
-               <Button variant="primary">Enter predictions</Button> */}
+               <Button variant="primary">Enter predictions</Button>
             </Card.Body>
          </Card>
 
          <Card>
             <Card.Body>
-               TODO
-               {/* <Row>
+               <Row>
                   <Col className="text-center d-flex flex-column">
                      <strong>Quali</strong>
                      <span>100</span>
@@ -44,7 +42,7 @@ const Home = () => {
                      <strong>Total</strong>
                      <span>263</span>
                   </Col>
-               </Row> */}
+               </Row>
             </Card.Body>
          </Card>
 
@@ -60,8 +58,8 @@ const Home = () => {
                            <h6 className="p-0 mb-1">{grandPrix.name}</h6>
                            <p className="m-0">{format(new Date(grandPrix.qualifying_start_timestamp), 'dd/MM HH:mm')}</p>
                         </Col>
-                        <Col xs={2} className="d-flex align-items-center" xs={2}>
-                           TODO
+                        <Col xs={2} className="d-flex align-items-center">
+                           <span>{(grandPrix.userPrediction && grandPrix.userPrediction.total_points) || '-'}</span>
                         </Col>
                      </Row>
                   </ListGroup.Item>

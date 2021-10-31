@@ -81,7 +81,7 @@ const SignIn = () => {
                   <Button disabled={loading} variant="primary px-5" type="submit">
                      <span className="px-5"> Sign in</span>
                   </Button>
-                  <NavLink disabled={loading} className="mt-2" to="/signin">
+                  <NavLink disabled={loading} className="mt-2" to="/signup">
                      <small>Need an account? Sign in!</small>
                   </NavLink>
                </div>

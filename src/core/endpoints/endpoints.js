@@ -1,4 +1,4 @@
-export const API_GRAND_PRIX = '/grandPrix';
+export const API_GRAND_PRIX = '/grand-prix';
 export const API_TEAMS = '/teams';
 export const API_PREDICTIONS = '/predictions';
 export const API_DRIVERS = '/drivers';
