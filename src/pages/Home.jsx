@@ -3,8 +3,11 @@ import { Button, Card, ListGroup, Stack, Badge, Row, Col } from 'react-bootstrap
 import { API_GRAND_PRIX } from '../core/endpoints/endpoints';
 import { useGet } from '../core/hooks/useGet';
 import { format } from 'date-fns';
+import { useHistory } from 'react-router';
 
 const Home = () => {
+   const { push } = useHistory();
+
    const { data: grandPrix, loading: loadingGrandPrix } = useGet(API_GRAND_PRIX, { initialValue: [] });
 
    if (loadingGrandPrix) {
@@ -19,7 +22,9 @@ const Home = () => {
                <Card.Text>
                   Next up is the Mexican GP, who's going to win? Submit your predictions before <strong>06/11 12:00</strong>!
                </Card.Text>
-               <Button variant="primary">Enter predictions</Button>
+               <Button onClick={() => push('/prediction/c6498159-c5a8-48d2-9511-ae8bb2093335')} variant="primary" type="button">
+                  Enter predictions
+               </Button>
             </Card.Body>
          </Card>
 
