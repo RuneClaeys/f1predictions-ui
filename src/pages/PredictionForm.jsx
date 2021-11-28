@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { Form } from 'react-bootstrap';
 import QualifyingForm from '../components/QualifyingForm';
@@ -10,6 +10,7 @@ import validationSchema from '../core/validation-schemas/predictionSchema';
 import { usePost } from '../core/hooks/usePost';
 import { API_GRAND_PRIX, API_PREDICTIONS } from '../core/endpoints/endpoints';
 import { useStore } from '../core/hooks/useStore';
+import { useNavbar } from '../core/hooks/useNavbar';
 
 const PredictionForm = () => {
    const [enableValidation, setEnableValidation] = React.useState(false);
@@ -17,7 +18,11 @@ const PredictionForm = () => {
 
    const { id } = useParams();
    const { push, goBack } = useHistory();
-   const { dispatch } = useStore();
+
+   useNavbar({
+      leftAction: goBack,
+      leftActionIcon: 'fa-arrow-left',
+   });
 
    const { fetch, loading } = usePost();
 
@@ -40,16 +45,6 @@ const PredictionForm = () => {
    function handlePrev() {
       setStepIndex(stepIndex - 1);
    }
-
-   useEffect(() => {
-      dispatch({
-         type: 'SET_NAVBAR',
-         payload: {
-            leftAction: goBack,
-            leftActionIcon: 'fa-arrow-left',
-         },
-      });
-   }, []);
 
    return (
       <Formik
