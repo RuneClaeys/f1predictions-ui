@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, Stack } from 'react-bootstrap';
+import { Container, Stack } from 'react-bootstrap';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { AuthProvider } from './core/contexts/Auth';
 
@@ -8,8 +8,8 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import PredictionForm from './pages/PredictionForm';
 
-import Logo from './assets/logo.svg';
 import { StoreProvider } from './core/contexts/Store';
+import Navbar from './components/Navbar';
 
 const App = () => {
    return (
@@ -17,14 +17,9 @@ const App = () => {
          <AuthProvider>
             <StoreProvider>
                <Stack gap={3} style={{ maxHeight: '100vh' }} className="view overflow-auto ">
-                  <Navbar className="sticky-top" bg="primary" variant="dark">
-                     <Container>
-                        <Navbar.Brand href="/" className="d-flex align-items-center gap-3">
-                           <img src={Logo} height="15" className="d-inline-block align-top" alt="Logo" />
-                           <span>Formula 1 predictions</span>
-                        </Navbar.Brand>
-                     </Container>
-                  </Navbar>
+                  <div className="sticky-top">
+                     <Navbar />
+                  </div>
                   <Container>
                      <Switch>
                         <Route exact path="/" component={Home} />

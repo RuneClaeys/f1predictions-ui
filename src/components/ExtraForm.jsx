@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useStore } from '../core/hooks/useStore';
 
-const ExtraForm = ({ handleChange, errors, values, disabled }) => {
+const ExtraForm = ({ handleChange, errors, values, disabled, onPrev }) => {
    const { drivers } = useStore().state;
 
    return (
@@ -53,9 +53,14 @@ const ExtraForm = ({ handleChange, errors, values, disabled }) => {
             <Form.Control.Feedback type="invalid">{errors[`FIRST_DNF`]}</Form.Control.Feedback>
          </Form.Group>
 
-         <div className="d-flex p-4 w-100 flex-column position-fixed bg-white" style={{ bottom: 0, left: 0 }}>
-            <Button variant="primary" type="submit" disabled={disabled}>
-               <span className="me-3">Submit prediction</span>
+         <div className="d-flex p-4 w-100 position-fixed bg-white gap-4" style={{ bottom: 0, left: 0 }}>
+            <Button onClick={onPrev} variant="outline-primary" type="button" className="col" disabled={disabled}>
+               <i className="fas fa-arrow-left"></i>
+               <span className="ms-3">Back</span>
+            </Button>
+            <Button variant="primary" className="col-7" type="submit" disabled={disabled}>
+               <span className="me-3">Save</span>
+               <i className="fas fa-check"></i>
             </Button>
          </div>
       </div>

@@ -3,19 +3,29 @@ import { API_DRIVERS } from '../endpoints/endpoints';
 import { useAuth } from '../hooks/useAuth';
 import { useGet } from '../hooks/useGet';
 
+const initialNavBar = {
+   title: 'Formula 1 predictions',
+   leftAction: null,
+   leftActioinIcon: null,
+   rightAction: null,
+   rightActionIcon: null,
+};
+
 const initialState = {
-   grandPrixes: [],
    drivers: [],
+   navbar: initialNavBar,
 };
 
 const StoreContext = React.createContext();
 
 function storeReducer(state, action) {
    switch (action.type) {
-      case 'SET_GRAND_PRIXES':
-         return { ...state, grandPrixes: action.payload };
       case 'SET_DRIVERS':
          return { ...state, drivers: action.payload };
+      case 'SET_NAVBAR':
+         return { ...state, navbar: { ...state.navbar, ...action.payload } };
+      case 'RESET_NAVBAR':
+         return { ...state, navbar: initialNavBar };
       default:
          return state;
    }

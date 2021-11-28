@@ -1,75 +1,88 @@
-import React from 'react';
-import { Button, Card, ListGroup, Stack, Badge, Row, Col } from 'react-bootstrap';
-import { API_GRAND_PRIX } from '../core/endpoints/endpoints';
-import { useGet } from '../core/hooks/useGet';
-import { format } from 'date-fns';
-import { useHistory } from 'react-router';
+import React, { useEffect, useMemo } from 'react';
+import { Card, ListGroup, Stack, Row, Col } from 'react-bootstrap';
+import { format, differenceInDays } from 'date-fns';
+
+import { SEASON } from '../core/data/Season';
+import ShowcaseGP from '../components/ShowcaseGP';
+import { useStore } from '../core/hooks/useStore';
 
 const Home = () => {
-   const { push } = useHistory();
+   const { dispatch } = useStore();
 
-   const { data: grandPrix, loading: loadingGrandPrix } = useGet(API_GRAND_PRIX, { initialValue: [] });
+   const prevGP = useMemo(() => {
+      const dates = SEASON.grandPrixs.filter((gp) => new Date(gp.date) < new Date()).sort((a, b) => new Date(a.date) - new Date(b.date));
+      return dates[dates.length - 1];
+   }, []);
 
-   if (loadingGrandPrix) {
-      return <div>loading...</div>;
-   }
+   const nextGP = useMemo(() => {
+      const dates = SEASON.grandPrixs.filter((gp) => new Date(gp.date) > new Date());
+      return dates[dates.length - 1];
+   }, []);
+
+   const showcaseGP = useMemo(() => {
+      if (nextGP && differenceInDays(new Date(nextGP.date), new Date()) <= 3) {
+         return nextGP;
+      }
+      return prevGP;
+   }, [prevGP, nextGP]);
+
+   useEffect(() => {
+      dispatch({
+         type: 'RESET_NAVBAR',
+      });
+   }, []);
 
    return (
-      <Stack gap={3}>
-         <Card>
-            <Card.Body>
-               <Card.Title>Mexican GP</Card.Title>
-               <Card.Text>
-                  Next up is the Mexican GP, who's going to win? Submit your predictions before <strong>06/11 12:00</strong>!
-               </Card.Text>
-               <Button onClick={() => push('/prediction/c6498159-c5a8-48d2-9511-ae8bb2093335')} variant="primary" type="button">
-                  Enter predictions
-               </Button>
-            </Card.Body>
-         </Card>
+      <Stack gap={3} className="mb-5">
+         <ShowcaseGP showcaseGP={showcaseGP} isUpcomming={showcaseGP.id === nextGP?.id} />
 
-         <Card>
+         <h5 className="mb-0">Season results</h5>
+         <Card bg="secondary" text="white">
             <Card.Body>
                <Row>
                   <Col className="text-center d-flex flex-column">
                      <strong>Quali</strong>
-                     <span>100</span>
+                     <span>{SEASON.total_qualifying}</span>
                   </Col>
                   <Col className="text-center d-flex flex-column">
                      <strong>Race</strong>
-                     <span>131</span>
+                     <span>{SEASON.total_race}</span>
                   </Col>
                   <Col className="text-center d-flex flex-column">
                      <strong>Other</strong>
-                     <span>22</span>
+                     <span>{SEASON.total_other}</span>
                   </Col>
                   <Col className="text-center d-flex flex-column">
                      <strong>Total</strong>
-                     <span>263</span>
+                     <span>{SEASON.total}</span>
                   </Col>
                </Row>
             </Card.Body>
          </Card>
 
+         <h5 className="mb-0">History</h5>
          <ListGroup as="ol" reversed>
-            {grandPrix.map((grandPrix) => {
-               return (
-                  <ListGroup.Item key={grandPrix.id} as="li" className="d-flex justify-content-between align-items-start">
-                     <Row className="w-100">
-                        <Col className="d-flex align-items-center" xs={2}>
-                           <strong>TODO</strong>
-                        </Col>
-                        <Col xs={8}>
-                           <h6 className="p-0 mb-1">{grandPrix.name}</h6>
-                           <p className="m-0">{format(new Date(grandPrix.qualifying_start_timestamp), 'dd/MM HH:mm')}</p>
-                        </Col>
-                        <Col xs={2} className="d-flex align-items-center">
-                           <span>{(grandPrix.userPrediction && grandPrix.userPrediction.total_points) || '-'}</span>
-                        </Col>
-                     </Row>
-                  </ListGroup.Item>
-               );
-            })}
+            {SEASON.grandPrixs
+               .filter((gp) => new Date(gp.date) < new Date())
+               .reverse()
+               .map((grandPrix, i) => {
+                  return (
+                     <ListGroup.Item key={grandPrix.id} as="li" className="d-flex justify-content-between align-items-start">
+                        <Row className="w-100">
+                           <Col className="d-flex align-items-center justify-content-center" xs={2}>
+                              <strong>{grandPrix.event}</strong>
+                           </Col>
+                           <Col xs={9}>
+                              <h6 className="p-0 mb-1">{grandPrix.name}</h6>
+                              <p className="m-0">{format(new Date(grandPrix.date), 'dd/MM/yyyy HH:mm:ss')}</p>
+                           </Col>
+                           <Col xs={1} className="d-flex align-items-center">
+                              <span>{grandPrix.result?.total}</span>
+                           </Col>
+                        </Row>
+                     </ListGroup.Item>
+                  );
+               })}
          </ListGroup>
       </Stack>
    );
