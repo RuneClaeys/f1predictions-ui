@@ -5,7 +5,7 @@ import { differenceInDays, fromUnixTime } from 'date-fns';
 import ShowcaseGP from '../components/Home/ShowcaseGP';
 import { useGet } from '../core/hooks/useGet';
 import { API_RESULTS } from '../core/endpoints/endpoints';
-import SeasonTotal from '../components/Home/SeasonTotal';
+import TotalPoints from '../components/TotalPoints';
 import GrandPrixHistory from '../components/Home/GrandPrixHistory';
 
 const Home = () => {
@@ -33,7 +33,10 @@ const Home = () => {
    return (
       <Stack gap={3} className="mb-5">
          <ShowcaseGP showcaseGP={showcaseGP} isUpcomming={showcaseGP?.id === nextGP?.id} loading={loading} />
-         <SeasonTotal overview={overview} loading={loading} />
+         <>
+            <h5 className="mb-0">Season total</h5>
+            <TotalPoints results={overview} loading={loading} />
+         </>
          <GrandPrixHistory overview={overview} loading={loading} />
       </Stack>
    );
