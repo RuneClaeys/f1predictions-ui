@@ -6,6 +6,7 @@ import { API_USER_SIGN_UP } from '../core/endpoints/endpoints';
 import { useAuth } from '../core/hooks/useAuth';
 import * as yup from 'yup';
 import axios from 'axios';
+import { useNavbar } from '../core/hooks/useNavbar';
 
 const SignUp = () => {
    const [enableValidation, setEnableValidation] = React.useState(false);
@@ -13,6 +14,11 @@ const SignUp = () => {
 
    const { setToken } = useAuth();
    const { push } = useHistory();
+
+   useNavbar({
+      title: 'Sign up',
+      showBottomNav: false,
+   });
 
    async function handleSignUp(user) {
       let body = { ...user };

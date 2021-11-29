@@ -35,7 +35,7 @@ const Home = () => {
          <ShowcaseGP showcaseGP={showcaseGP} isUpcomming={showcaseGP?.id === nextGP?.id} loading={loading} />
          <>
             <h5 className="mb-0">Season total</h5>
-            <TotalPoints results={overview} loading={loading} />
+            <TotalPoints results={overview} loading={loading} bg="secondary" />
          </>
          <GrandPrixHistory overview={overview} loading={loading} />
       </Stack>

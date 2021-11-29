@@ -7,6 +7,7 @@ import { useAuth } from '../core/hooks/useAuth';
 
 import * as yup from 'yup';
 import axios from 'axios';
+import { useNavbar } from '../core/hooks/useNavbar';
 
 const SignIn = () => {
    const [enableValidation, setEnableValidation] = React.useState(false);
@@ -14,6 +15,11 @@ const SignIn = () => {
 
    const { setToken } = useAuth();
    const { push } = useHistory();
+
+   useNavbar({
+      title: 'Sign in',
+      showBottomNav: false,
+   });
 
    async function handleSignIn(user) {
       setLoading(true);

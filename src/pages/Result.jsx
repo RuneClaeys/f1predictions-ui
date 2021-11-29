@@ -14,6 +14,7 @@ const Result = () => {
       title: 'Dutch GP',
       leftAction: goBack,
       leftActionIcon: 'fa-arrow-left',
+      showBottomNav: false,
    });
 
    return (

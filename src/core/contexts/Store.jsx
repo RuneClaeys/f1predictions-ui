@@ -4,11 +4,12 @@ import { useAuth } from '../hooks/useAuth';
 import { useGet } from '../hooks/useGet';
 
 const initialNavBar = {
-   title: 'Formula 1 predictions',
+   title: "Who's The F1stest",
    leftAction: null,
    leftActioinIcon: null,
    rightAction: null,
    rightActionIcon: null,
+   showBottomNav: true,
 };
 
 const initialState = {

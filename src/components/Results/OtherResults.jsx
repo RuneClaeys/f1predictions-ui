@@ -13,7 +13,7 @@ const OtherResults = ({ open }) => {
                </thead>
                <tbody>
                   <tr>
-                     <th colspan="3" className="w-100 px-2">
+                     <th colSpan="3" className="w-100 px-2">
                         First DNF
                      </th>
                   </tr>
@@ -23,7 +23,7 @@ const OtherResults = ({ open }) => {
                      <td className="p-2 text-center">0</td>
                   </tr>
                   <tr>
-                     <th colspan="3" className="w-100 px-2">
+                     <th colSpan="3" className="w-100 px-2">
                         DHL Fastest Lap
                      </th>
                   </tr>

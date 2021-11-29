@@ -1,8 +1,8 @@
 import { Card, Col, Placeholder, Row } from 'react-bootstrap';
 
-const TotalPoints = ({ results, loading }) => {
+const TotalPoints = ({ results, loading, bg = 'primary' }) => {
    return (
-      <Card bg="secondary" text="white">
+      <Card bg={bg} text="white">
          <Card.Body>
             <Row>
                <Col className="text-center d-flex flex-column">
