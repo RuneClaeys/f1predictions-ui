@@ -31,12 +31,12 @@ const Home = () => {
    }, [prevGP, nextGP]);
 
    return (
-      <Stack gap={3} className="mb-5">
+      <Stack gap={4} className="mb-5">
          <ShowcaseGP showcaseGP={showcaseGP} isUpcomming={showcaseGP?.id === nextGP?.id} loading={loading} />
-         <>
-            <h5 className="mb-0">Season total</h5>
+         <div>
+            <h5 className="mb-3">Season total</h5>
             <TotalPoints results={overview} loading={loading} bg="secondary" />
-         </>
+         </div>
          <GrandPrixHistory overview={overview} loading={loading} />
       </Stack>
    );

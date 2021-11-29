@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 
 const GrandPrixHistory = ({ overview, loading }) => {
    return (
-      <>
-         <h5 className="mb-0">History</h5>
+      <div>
+         <h5 className="mb-3">History</h5>
          {loading ? (
             <ListGroup as="ol">
                {[...Array(5)].map((_, i) => (
@@ -53,7 +53,7 @@ const GrandPrixHistory = ({ overview, loading }) => {
                   })}
             </ListGroup>
          )}
-      </>
+      </div>
    );
 };
 
