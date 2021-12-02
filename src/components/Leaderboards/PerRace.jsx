@@ -5,17 +5,17 @@ const PerRace = () => {
       <Table className="mb-0 ">
          <thead>
             <tr>
-               <th className="position-sticky bg-white" style={{ left: '0', top: '0', zIndex: '1020' }}>
+               <th className="position-sticky bg-light" style={{ left: '0', top: '0', zIndex: '1020' }}>
                   Player
                </th>
                {[...Array(20)].map((_, i) => {
                   return (
-                     <th key={i} className="text-nowrap text-center position-sticky bg-white" style={{ top: '0' }}>
+                     <th key={i} className="text-nowrap text-center position-sticky bg-light" style={{ top: '0' }}>
                         Dutch GP
                      </th>
                   );
                })}
-               <th className="position-sticky bg-white" style={{ right: '0', top: '0', zIndex: '1020' }}>
+               <th className="position-sticky bg-light" style={{ right: '0', top: '0', zIndex: '1020' }}>
                   Total
                </th>
             </tr>

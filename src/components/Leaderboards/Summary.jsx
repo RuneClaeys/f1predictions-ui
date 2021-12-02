@@ -5,19 +5,19 @@ const Summary = () => {
       <Table className="mb-0">
          <thead>
             <tr>
-               <th style={{ top: '0' }} className="text-center position-sticky bg-white">
+               <th style={{ top: '0' }} className="text-center position-sticky bg-light">
                   Player
                </th>
-               <th style={{ minWidth: '30px', top: '0' }} className="text-center position-sticky bg-white">
+               <th style={{ minWidth: '30px', top: '0' }} className="border-0 text-center position-sticky bg-light">
                   Quali
                </th>
-               <th style={{ minWidth: '30px', top: '0' }} className="text-center position-sticky bg-white">
+               <th style={{ minWidth: '30px', top: '0' }} className="border-0 text-center position-sticky bg-light">
                   Race
                </th>
-               <th style={{ minWidth: '30px', top: '0' }} className="text-center position-sticky bg-white">
+               <th style={{ minWidth: '30px', top: '0' }} className="border-0 text-center position-sticky bg-light">
                   Other
                </th>
-               <th style={{ minWidth: '30px', top: '0' }} className="text-center position-sticky bg-white">
+               <th style={{ minWidth: '30px', top: '0' }} className="border-0 text-center position-sticky bg-light">
                   Total
                </th>
             </tr>
