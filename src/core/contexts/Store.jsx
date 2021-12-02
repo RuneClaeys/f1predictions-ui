@@ -4,7 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useGet } from '../hooks/useGet';
 
 const initialNavBar = {
-   title: "Who's The F1stest",
+   title: 'F1 Predictions',
    leftAction: null,
    leftActioinIcon: null,
    rightAction: null,

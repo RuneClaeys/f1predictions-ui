@@ -25,7 +25,7 @@ const App = () => {
                         <div className="sticky-top">
                            <Navbar />
                         </div>
-                        <Container className="h-100" style={{ minHeight: 'calc(100vh - 132px)' }}>
+                        <Container className="h-100" style={{ minHeight: 'calc(100vh - 134px)' }}>
                            <Switch>
                               <Route exact path="/" component={Home} />
                               <Route exact path="/prediction/:id" component={PredictionForm} />
