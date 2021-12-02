@@ -26,7 +26,7 @@ const Summary = () => {
             {[...Array(15)].map((_, i) => {
                return (
                   <tr key={i}>
-                     <td>Thibault Debrycke</td>
+                     <td>Thibault D.</td>
                      <td className="text-center">32</td>
                      <td className="text-center">54</td>
                      <td className="text-center">12</td>
