@@ -14,7 +14,9 @@ const QualifyingResults = ({ open }) => {
                <tbody>
                   {[...Array(5)].map((_, i) => (
                      <tr key={i}>
-                        <td className="p-2">Max Verstappen</td>
+                        <td className="p-2">
+                           <strong>{i + 1}. </strong>Max Verstappen
+                        </td>
                         <td className="p-2 text-center">P2</td>
                         <td className="p-2 text-center">3</td>
                      </tr>

@@ -19,7 +19,9 @@ const OtherResults = ({ open }) => {
                   </tr>
                   <tr>
                      <td className="p-2">Max Verstappen</td>
-                     <td className="p-2 text-center">NO</td>
+                     <td className="p-2 text-center">
+                        <i className="fas fa-times text-danger"></i>
+                     </td>
                      <td className="p-2 text-center">0</td>
                   </tr>
                   <tr>
@@ -29,7 +31,9 @@ const OtherResults = ({ open }) => {
                   </tr>
                   <tr>
                      <td className="p-2">Max Verstappen</td>
-                     <td className="p-2 text-center">NO</td>
+                     <td className="p-2 text-center">
+                        <i className="fas fa-check text-success"></i>
+                     </td>
                      <td className="p-2 text-center">0</td>
                   </tr>
                   <tr>
