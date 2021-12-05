@@ -15,7 +15,7 @@ const Leaderboard = () => {
 
    return (
       <Stack>
-         <Nav variant="tabs" defaultActiveKey={0} onSelect={(eventKey) => setActiveKey(eventKey)}>
+         <Nav className="mb-2" variant="pills" defaultActiveKey={0} onSelect={(eventKey) => setActiveKey(eventKey)}>
             <Nav.Item>
                <Nav.Link eventKey="0">Summary</Nav.Link>
             </Nav.Item>
@@ -23,7 +23,7 @@ const Leaderboard = () => {
                <Nav.Link eventKey="1">Per race</Nav.Link>
             </Nav.Item>
          </Nav>
-         <div className="border border-top-0 overflow-auto" style={{ maxHeight: 'calc(100vh - 11rem)' }}>
+         <div className="border overflow-auto" style={{ maxHeight: 'calc(100vh - 12rem)' }}>
             {activeKey == 0 && <Summary />}
             {activeKey == 1 && <PerRace />}
          </div>

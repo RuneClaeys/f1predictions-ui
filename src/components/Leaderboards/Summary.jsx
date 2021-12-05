@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 
 const Summary = () => {
    return (
-      <Table className="mb-0">
+      <Table className="mb-0" striped bordered>
          <thead>
             <tr>
                <th style={{ top: '0' }} className="text-center position-sticky bg-light">

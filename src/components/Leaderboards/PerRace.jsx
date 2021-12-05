@@ -2,9 +2,9 @@ import Table from 'react-bootstrap/Table';
 
 const PerRace = () => {
    return (
-      <Table className="mb-0 ">
+      <Table className="mb-0 " striped>
          <thead>
-            <tr>
+            <tr className="border-0">
                <th className="position-sticky bg-light" style={{ left: '0', top: '0', zIndex: '1020' }}>
                   Player
                </th>
