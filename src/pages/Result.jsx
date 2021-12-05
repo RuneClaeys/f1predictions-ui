@@ -1,5 +1,6 @@
 import React from 'react';
-import { Stack } from 'react-bootstrap';
+import Stack from 'react-bootstrap/Stack';
+
 import { useHistory, useParams } from 'react-router';
 import OtherResults from '../components/Results/OtherResults';
 import QualifyingResults from '../components/Results/QualifyingResults';

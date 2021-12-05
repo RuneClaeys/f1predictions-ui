@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { Form } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import QualifyingForm from '../components/QualifyingForm';
 import RaceForm from '../components/RaceForm';
 import ExtraForm from '../components/ExtraForm';
@@ -9,7 +9,6 @@ import { Prompt, useHistory, useParams } from 'react-router';
 import validationSchema from '../core/validation-schemas/predictionSchema';
 import { usePost } from '../core/hooks/usePost';
 import { API_GRAND_PRIX, API_PREDICTIONS } from '../core/endpoints/endpoints';
-import { useStore } from '../core/hooks/useStore';
 import { useNavbar } from '../core/hooks/useNavbar';
 
 const PredictionForm = () => {

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 import { useStore } from '../core/hooks/useStore';
 
 const ExtraForm = ({ handleChange, errors, values, disabled, onPrev }) => {

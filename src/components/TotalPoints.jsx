@@ -1,4 +1,7 @@
-import { Card, Col, Placeholder, Row } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Placeholder from 'react-bootstrap/Placeholder';
+import Row from 'react-bootstrap/Row';
 
 const TotalPoints = ({ results, loading, bg = 'primary' }) => {
    return (

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Stack } from 'react-bootstrap';
+import Stack from 'react-bootstrap/Stack';
 import { differenceInDays, fromUnixTime } from 'date-fns';
 
 import ShowcaseGP from '../components/Home/ShowcaseGP';

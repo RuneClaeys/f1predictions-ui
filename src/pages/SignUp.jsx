@@ -1,6 +1,8 @@
 import { Formik } from 'formik';
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { NavLink, useHistory } from 'react-router-dom';
 import { API_USER_SIGN_UP } from '../core/endpoints/endpoints';
 import { useAuth } from '../core/hooks/useAuth';

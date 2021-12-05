@@ -1,4 +1,7 @@
-import { Card, Button, Placeholder } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Placeholder from 'react-bootstrap/Placeholder';
+
 import { useHistory } from 'react-router';
 import { format } from 'date-fns';
 import { fromUnixTime } from 'date-fns';

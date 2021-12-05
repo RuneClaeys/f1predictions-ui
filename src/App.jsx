@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Stack } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Stack from 'react-bootstrap/Stack';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { AuthProvider } from './core/contexts/Auth';
 

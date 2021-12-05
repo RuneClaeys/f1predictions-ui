@@ -1,6 +1,8 @@
 import { format, fromUnixTime } from 'date-fns';
-
-import { Col, ListGroup, Placeholder, Row } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Placeholder from 'react-bootstrap/Placeholder';
+import Row from 'react-bootstrap/Row';
 import { NavLink } from 'react-router-dom';
 
 const GrandPrixHistory = ({ overview, loading }) => {
