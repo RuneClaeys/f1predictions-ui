@@ -23,7 +23,7 @@ const App = () => {
                <StoreContext.Consumer>
                   {({ state }) => (
                      <Stack gap={3}>
-                        <div className="sticky-top">
+                        <div className="sticky-top yeet">
                            <Navbar />
                         </div>
                         <Container className="h-100" style={{ minHeight: 'calc(100vh - 134px)' }}>
