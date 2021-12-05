@@ -1,15 +1,15 @@
 import React from 'react';
 import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
-import QualifyingForm from '../components/QualifyingForm';
-import RaceForm from '../components/RaceForm';
-import ExtraForm from '../components/ExtraForm';
 import { Prompt, useHistory, useParams } from 'react-router';
 
 import validationSchema from '../core/validation-schemas/predictionSchema';
 import { usePost } from '../core/hooks/usePost';
 import { API_GRAND_PRIX, API_PREDICTIONS } from '../core/endpoints/endpoints';
 import { useNavbar } from '../core/hooks/useNavbar';
+import QualifyingForm from '../components/prediction/QualifyingForm';
+import RaceForm from '../components/prediction/RaceForm';
+import ExtraForm from '../components/prediction/ExtraForm';
 
 const PredictionForm = () => {
    const [enableValidation, setEnableValidation] = React.useState(false);
@@ -21,6 +21,7 @@ const PredictionForm = () => {
    useNavbar({
       leftAction: goBack,
       leftActionIcon: 'fa-arrow-left',
+      showBottomNav: false,
    });
 
    const { fetch, loading } = usePost();
