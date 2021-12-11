@@ -1,4 +1,25 @@
-const OtherResults = ({ open }) => {
+import { useMemo } from 'react';
+
+const OtherResults = ({ open, grandPrix }) => {
+   const firstDNF = useMemo(
+      () => grandPrix?.user_prediction?.prediction_entries?.find((prediction) => prediction.name.startsWith('FIRST_DNF')),
+      [grandPrix]
+   );
+
+   const firstDNFResult = useMemo(
+      () => grandPrix?.result?.result_entries?.find((result) => result.name.startsWith('FIRST_DNF')),
+      [grandPrix]
+   );
+
+   const fastestLap = useMemo(
+      () => grandPrix?.user_prediction?.prediction_entries?.find((prediction) => prediction.name.startsWith('FASTEST_LAP')),
+      [grandPrix]
+   );
+
+   const fastestLapResult = useMemo(
+      () => grandPrix?.result?.result_entries?.find((result) => result.name.startsWith('FASTEST_LAP')),
+      [grandPrix]
+   );
    return (
       <div className="card">
          <details className="card-body" open={open}>
@@ -6,8 +27,8 @@ const OtherResults = ({ open }) => {
             <table className="table mt-2">
                <thead>
                   <tr>
-                     <th className="w-100 px-2">Prediction</th>
-                     <th className="text-nowrap px-2 text-center">Result</th>
+                     <th className=" px-2">Prediction</th>
+                     <th className="text-nowrap px-2 ">Result</th>
                      <th className="text-nowrap px-2 text-center">Points</th>
                   </tr>
                </thead>
@@ -18,11 +39,13 @@ const OtherResults = ({ open }) => {
                      </th>
                   </tr>
                   <tr>
-                     <td className="p-2">Max Verstappen</td>
-                     <td className="p-2 text-center">
-                        <i className="fas fa-times text-danger"></i>
+                     <td className="p-2">
+                        {firstDNF?.driver?.first_name} {firstDNF?.driver?.last_name}
                      </td>
-                     <td className="p-2 text-center">0</td>
+                     <td className="p-2 ">
+                        {firstDNFResult?.driver?.first_name} {firstDNFResult?.driver?.last_name}
+                     </td>
+                     <td className="p-2 text-center">{firstDNF?.points}</td>
                   </tr>
                   <tr>
                      <th colSpan="3" className="w-100 px-2">
@@ -30,11 +53,13 @@ const OtherResults = ({ open }) => {
                      </th>
                   </tr>
                   <tr>
-                     <td className="p-2">Max Verstappen</td>
-                     <td className="p-2 text-center">
-                        <i className="fas fa-check text-success"></i>
+                     <td className="p-2">
+                        {fastestLap?.driver?.first_name} {fastestLap?.driver?.last_name}
                      </td>
-                     <td className="p-2 text-center">0</td>
+                     <td className="p-2 ">
+                        {fastestLapResult?.driver?.first_name} {fastestLapResult?.driver?.last_name}
+                     </td>
+                     <td className="p-2 text-center">{fastestLap?.points}</td>
                   </tr>
                   <tr>
                      <td className="p-2">
@@ -42,7 +67,7 @@ const OtherResults = ({ open }) => {
                      </td>
                      <td className="p-2 text-center"></td>
                      <td className="p-2 text-center">
-                        <strong>21</strong>
+                        <strong>{grandPrix?.user_prediction?.other_points}</strong>
                      </td>
                   </tr>
                </tbody>

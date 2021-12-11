@@ -6,26 +6,23 @@ export function useGet(url, { initialFetch = true, initialFetchOptions = {}, ini
    const [error, setError] = React.useState(null);
    const [data, setData] = React.useState(initialValue);
 
-   const fetch = React.useCallback(
-      async (fetchOptions) => {
-         setLoading(true);
+   const fetch = React.useCallback(async (url, fetchOptions) => {
+      setLoading(true);
 
-         return await axios
-            .get(`${import.meta.env.VITE_API_BASE_URL}${url}`, fetchOptions)
-            .then((response) => response.data)
-            .then((response) => {
-               setData(response);
-               return response;
-            })
-            .catch((error) => setError(error))
-            .finally(() => setLoading(false));
-      },
-      [url]
-   );
+      return await axios
+         .get(`${import.meta.env.VITE_API_BASE_URL}${url}`, fetchOptions)
+         .then((response) => response.data)
+         .then((response) => {
+            setData(response);
+            return response;
+         })
+         .catch((error) => setError(error))
+         .finally(() => setLoading(false));
+   }, []);
 
    React.useEffect(() => {
       if (initialFetch) {
-         fetch(initialFetchOptions);
+         fetch(url, initialFetchOptions);
       }
    }, []);
 

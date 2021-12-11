@@ -41,7 +41,7 @@ const StoreProvider = ({ children }) => {
 
    useEffect(async () => {
       if (token) {
-         const drivers = await fetch();
+         const drivers = await fetch(API_DRIVERS);
          dispatch({ type: 'SET_DRIVERS', payload: drivers });
       }
    }, [token, fetch]);

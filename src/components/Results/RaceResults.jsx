@@ -1,4 +1,21 @@
-const RaceResults = ({ open }) => {
+import { useMemo } from 'react';
+
+const RaceResults = ({ grandPrix, open }) => {
+   const racePredictions = useMemo(
+      () =>
+         grandPrix?.user_prediction?.prediction_entries
+            ?.filter((prediction) => prediction.name.startsWith('RACE'))
+            ?.sort((a, b) => a.name.localeCompare(b.name)),
+      [grandPrix]
+   );
+
+   const raceResults = useMemo(
+      () =>
+         grandPrix?.result?.result_entries
+            ?.filter((result) => result.name.startsWith('RACE'))
+            ?.sort((a, b) => a.name.localeCompare(b.name)),
+      [grandPrix]
+   );
    return (
       <div className="card">
          <details className="card-body" open={open}>
@@ -6,19 +23,24 @@ const RaceResults = ({ open }) => {
             <table className="table mt-2">
                <thead>
                   <tr>
-                     <th className="w-100 px-2">Prediction</th>
-                     <th className="text-nowrap px-2 text-center">Result</th>
+                     <th className="px-2">Prediction</th>
+                     <th className="text-nowrap px-2">Result</th>
                      <th className="text-nowrap px-2 text-center">Points</th>
                   </tr>
                </thead>
                <tbody>
-                  {[...Array(10)].map((_, i) => (
+                  {racePredictions?.map((prediction, i) => (
                      <tr key={i}>
                         <td className="p-2">
-                           <strong>{i + 1}. </strong>Max Verstappen
+                           <strong>{i + 1}. </strong>
+                           <span>
+                              {prediction?.driver?.first_name} {prediction?.driver?.last_name}
+                           </span>
                         </td>
-                        <td className="p-2 text-center">P2</td>
-                        <td className="p-2 text-center">3</td>
+                        <td className="p-2 r">
+                           {raceResults[i]?.driver?.first_name} {raceResults[i]?.driver?.last_name}
+                        </td>
+                        <td className="p-2 text-center">{prediction?.points}</td>
                      </tr>
                   ))}
                   <tr>
@@ -27,7 +49,7 @@ const RaceResults = ({ open }) => {
                      </td>
                      <td className="p-2 text-center"></td>
                      <td className="p-2 text-center">
-                        <strong>21</strong>
+                        <strong>{grandPrix?.user_prediction?.race_points}</strong>
                      </td>
                   </tr>
                </tbody>

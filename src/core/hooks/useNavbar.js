@@ -15,5 +15,5 @@ export function useNavbar(options) {
             type: 'RESET_NAVBAR',
          });
       };
-   }, []);
+   }, [options]);
 }
