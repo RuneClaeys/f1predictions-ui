@@ -2,17 +2,9 @@ import axios from 'axios';
 
 axios.interceptors.request.use(
    function (config) {
-      const token = localStorage.getItem('bearerToken');
-
-      if (!token) {
-         return window.location.reload();
-      }
-
-      config.withCredentials = false;
-
+      config.withCredentials = true;
       config.headers = {
          ...config.headers,
-         Authorization: `Bearer ${token}`,
          Accept: 'application/json',
          'Content-Type': 'application/json',
       };
@@ -29,8 +21,9 @@ axios.interceptors.response.use(
    },
    function (error) {
       if (error.response.status === 401) {
-         localStorage.setItem('bearerToken', '');
-         window.location.reload();
+         // localStorage.setItem('bearerToken', '');
+         // window.location.reload();
+         window.location.replace(window.location.origin + `/login?redirect_uri=${window.location.href}`);
       }
       return Promise.reject(error);
    }

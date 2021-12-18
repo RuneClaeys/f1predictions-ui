@@ -1,12 +1,10 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { AuthProvider } from './core/contexts/Auth';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
 import PredictionForm from './pages/PredictionForm';
 import Result from './pages/Result';
 import Leaderboard from './pages/Leaderboard';
@@ -18,34 +16,33 @@ import BottomNavBar from './components/BottomNavBar';
 const App = () => {
    return (
       <BrowserRouter>
-         <AuthProvider>
-            <StoreProvider>
-               <StoreContext.Consumer>
-                  {({ state }) => (
-                     <Stack gap={3}>
-                        <div className="sticky-top yeet">
-                           <Navbar />
+         <StoreProvider>
+            <StoreContext.Consumer>
+               {({ state }) => (
+                  <Stack gap={3}>
+                     <div className="sticky-top yeet">
+                        <Navbar />
+                     </div>
+                     <Container className="h-100" style={{ minHeight: 'calc(100vh - 134px)' }}>
+                        <Switch>
+                           <Route path="/login" component={SignIn} />
+
+                           <Route exact path="/" component={Home} />
+                           <Route path="/prediction/:id" component={PredictionForm} />
+                           <Route path="/result/:id" component={Result} />
+                           <Route path="/leaderboard" component={Leaderboard} />
+                           <Route exact path="*" render={() => <Redirect to="/" />} />
+                        </Switch>
+                     </Container>
+                     {state.navbar.showBottomNav && (
+                        <div className="position-sticky" style={{ bottom: '0', width: '100vw' }}>
+                           <BottomNavBar />
                         </div>
-                        <Container className="h-100" style={{ minHeight: 'calc(100vh - 134px)' }}>
-                           <Switch>
-                              <Route exact path="/" component={Home} />
-                              <Route exact path="/prediction/:id" component={PredictionForm} />
-                              <Route exact path="/result/:id" component={Result} />
-                              <Route exact path="/leaderboard" component={Leaderboard} />
-                              <Route path="/signin" component={SignIn} />
-                              <Route path="/signup" component={SignUp} />
-                           </Switch>
-                        </Container>
-                        {state.navbar.showBottomNav && (
-                           <div className="position-sticky" style={{ bottom: '0', width: '100vw' }}>
-                              <BottomNavBar />
-                           </div>
-                        )}
-                     </Stack>
-                  )}
-               </StoreContext.Consumer>
-            </StoreProvider>
-         </AuthProvider>
+                     )}
+                  </Stack>
+               )}
+            </StoreContext.Consumer>
+         </StoreProvider>
       </BrowserRouter>
    );
 };

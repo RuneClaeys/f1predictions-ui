@@ -1,100 +1,32 @@
-import { Formik } from 'formik';
 import React from 'react';
+import { useMemo } from 'react';
+import { useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { NavLink, useHistory } from 'react-router-dom';
-import { API_USER_SIGN_IN } from '../core/endpoints/endpoints';
-import { useAuth } from '../core/hooks/useAuth';
-
-import * as yup from 'yup';
-import axios from 'axios';
-import { useNavbar } from '../core/hooks/useNavbar';
+import Stack from 'react-bootstrap/Stack';
+import { useLocation } from 'react-router-dom';
 
 const SignIn = () => {
-   const [enableValidation, setEnableValidation] = React.useState(false);
-   const [loading, setLoading] = React.useState(false);
+   const search = useLocation().search;
 
-   const { setToken } = useAuth();
-   const { push } = useHistory();
+   const redirectURI = useMemo(() => new URLSearchParams(search).get('redirect_uri'), [search]);
 
-   useNavbar({
-      title: 'Sign in',
-      showBottomNav: false,
-   });
-
-   async function handleSignIn(user) {
-      setLoading(true);
-
-      await axios
-         .create()
-         .post(`${import.meta.env.VITE_API_BASE_URL}${API_USER_SIGN_IN}`, user)
-         .then((response) => response.data)
-         .then((token) => {
-            setToken(token);
-            setLoading(false);
-            push('/');
-         })
-         .finally(() => setLoading(false));
-   }
+   const handleSignIn = useCallback(() => {
+      window.location.replace(`${import.meta.env.VITE_API_BASE_URL}/login?redirect_uri=${encodeURIComponent(redirectURI)}`);
+   }, [redirectURI]);
 
    return (
-      <Formik
-         validationSchema={yup.object().shape({
-            username: yup.string().required('Required'),
-            password: yup.string().required('Required'),
-         })}
-         validateOnChange={enableValidation}
-         validateOnBlur={enableValidation}
-         initialValues={{ username: '', password: '' }}
-         onSubmit={handleSignIn}
-      >
-         {({ handleSubmit, handleChange, values, errors }) => (
-            <Form
-               noValidate
-               onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSubmit();
-                  setEnableValidation(true);
-               }}
-            >
-               <Form.Group className="mb-3" controlId="validateUsername">
-                  <Form.Label>Username or Email</Form.Label>
-                  <Form.Control
-                     name="username"
-                     value={values.username}
-                     disabled={loading}
-                     placeholder="Enter email or username"
-                     onChange={handleChange}
-                     isInvalid={!!errors.username}
-                  />
-                  <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
-               </Form.Group>
+      <Stack className="display:flex; align-items-center p-4 mt-4">
+         <h3 className="mb-4">Welcome to F1 Predictions</h3>
 
-               <Form.Group className="mb-3" controlId="validatePassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                     name="password"
-                     value={values.password}
-                     disabled={loading}
-                     type="password"
-                     placeholder="Password"
-                     onChange={handleChange}
-                     isInvalid={!!errors.password}
-                  />
-                  <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
-               </Form.Group>
-
-               <div className="d-flex flex-column align-items-center mt-5">
-                  <Button disabled={loading} variant="primary px-5" type="submit">
-                     <span className="px-5"> Sign in</span>
-                  </Button>
-                  <NavLink disabled={loading} className="mt-2" to="/signup">
-                     <small>Need an account? Sign in!</small>
-                  </NavLink>
-               </div>
-            </Form>
-         )}
-      </Formik>
+         <center className="mb-5 pb-4">
+            Please login using your Google account by clicking the button below.
+            <br />
+         </center>
+         <Button onClick={handleSignIn} variant="primary w-100 mb-2">
+            <span className="px-5">Login with Google</span>
+         </Button>
+         <small> We'll never share your data with anyone.</small>
+      </Stack>
    );
 };
 

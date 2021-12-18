@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { API_DRIVERS } from '../endpoints/endpoints';
-import { useAuth } from '../hooks/useAuth';
 import { useGet } from '../hooks/useGet';
 
 const initialNavBar = {
@@ -37,14 +36,10 @@ const StoreProvider = ({ children }) => {
 
    const { fetch } = useGet(API_DRIVERS, { initialFetch: false });
 
-   const { token } = useAuth().state;
-
    useEffect(async () => {
-      if (token) {
-         const drivers = await fetch(API_DRIVERS);
-         dispatch({ type: 'SET_DRIVERS', payload: drivers });
-      }
-   }, [token, fetch]);
+      const drivers = await fetch(API_DRIVERS);
+      dispatch({ type: 'SET_DRIVERS', payload: drivers });
+   }, [fetch]);
 
    return <StoreContext.Provider value={{ state, dispatch }}>{children}</StoreContext.Provider>;
 };

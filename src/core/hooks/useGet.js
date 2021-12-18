@@ -10,7 +10,7 @@ export function useGet(url, { initialFetch = true, initialFetchOptions = {}, ini
       setLoading(true);
 
       return await axios
-         .get(`${import.meta.env.VITE_API_BASE_URL}${url}`, fetchOptions)
+         .get(`${import.meta.env.VITE_API_BASE_URL}${url}`, { ...fetchOptions })
          .then((response) => response.data)
          .then((response) => {
             setData(response);
