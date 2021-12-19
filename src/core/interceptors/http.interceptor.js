@@ -7,6 +7,7 @@ axios.interceptors.request.use(
          ...config.headers,
          Accept: 'application/json',
          'Content-Type': 'application/json',
+         crossDomain: true,
       };
       return config;
    },
