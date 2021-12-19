@@ -41,7 +41,7 @@ const StoreProvider = ({ children }) => {
 
    useEffect(() => {
       fetch(API_DRIVERS).then((drivers) => dispatch({ type: 'SET_DRIVERS', payload: drivers }));
-      fetch(API_GRAND_PRIX).then((grandPrix) => dispatch({ type: 'SET_GRAND_PRIX', payload: grandPrix }));
+      // fetch(API_GRAND_PRIX).then((grandPrix) => dispatch({ type: 'SET_GRAND_PRIX', payload: grandPrix }));
    }, [fetch]);
 
    return <StoreContext.Provider value={{ state, dispatch }}>{children}</StoreContext.Provider>;
