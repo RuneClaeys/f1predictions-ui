@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './scss/base.scss';
 import App from './App';
 
-import './core/interceptors/auth.interceptor';
+import './core/interceptors/http.interceptor';
 
 ReactDOM.render(
    <React.StrictMode>

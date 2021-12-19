@@ -9,6 +9,9 @@ const BottomNavBar = () => {
          <NavLink to="/leaderboard" exact activeClassName="opacity-100" className="btn btn-link py-2 my-1 col text-white opacity-50">
             <i className="fas fa-poll"></i>
          </NavLink>
+         <NavLink to="/admin" exact activeClassName="opacity-100" className="btn btn-link py-2 my-1 col text-white opacity-50">
+            <i className="fas fa-cog"></i>
+         </NavLink>
       </nav>
    );
 };

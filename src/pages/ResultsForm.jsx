@@ -5,13 +5,13 @@ import { Prompt, useHistory, useParams } from 'react-router';
 
 import validationSchema from '../core/validation-schemas/predictionSchema';
 import { usePost } from '../core/hooks/usePost';
-import { API_GRAND_PRIX, API_PREDICTIONS } from '../core/endpoints/endpoints';
+import { API_GRAND_PRIX, API_RESULTS } from '../core/endpoints/endpoints';
 import { useNavbar } from '../core/hooks/useNavbar';
 import QualifyingForm from '../components/GeneralForm/QualifyingForm';
 import RaceForm from '../components/GeneralForm/RaceForm';
 import ExtraForm from '../components/GeneralForm/ExtraForm';
 
-const PredictionForm = () => {
+const ResultsForm = () => {
    const [enableValidation, setEnableValidation] = React.useState(false);
    const [stepIndex, setStepIndex] = React.useState(0);
 
@@ -27,9 +27,9 @@ const PredictionForm = () => {
    const { fetch, loading } = usePost();
 
    async function handleSubmitPrediction(prediction) {
-      await fetch(API_GRAND_PRIX + `/${id}` + API_PREDICTIONS, {
-         prediction_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value })),
-      }).then(() => push('/'));
+      await fetch(API_GRAND_PRIX + `/${id}` + API_RESULTS, {
+         result_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value })),
+      }).then(() => push('/admin'));
    }
 
    async function handleNext(validateForm) {
@@ -94,4 +94,4 @@ const PredictionForm = () => {
    );
 };
 
-export default PredictionForm;
+export default ResultsForm;

@@ -7,7 +7,6 @@ axios.interceptors.request.use(
          ...config.headers,
          Accept: 'application/json',
          'Content-Type': 'application/json',
-         'crossorigin': true
       };
       return config;
    },
@@ -22,8 +21,6 @@ axios.interceptors.response.use(
    },
    function (error) {
       if (error.response.status === 401) {
-         // localStorage.setItem('bearerToken', '');
-         // window.location.reload();
          window.location.replace(window.location.origin + `/login?redirect_uri=${window.location.href}`);
       }
       return Promise.reject(error);

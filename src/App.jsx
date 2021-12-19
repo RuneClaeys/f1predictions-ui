@@ -12,6 +12,8 @@ import Leaderboard from './pages/Leaderboard';
 import { StoreContext, StoreProvider } from './core/contexts/Store';
 import Navbar from './components/Navbar';
 import BottomNavBar from './components/BottomNavBar';
+import Admin from './pages/Admin';
+import ResultsForm from './pages/ResultsForm';
 
 const App = () => {
    return (
@@ -31,6 +33,8 @@ const App = () => {
                            <Route path="/prediction/:id" component={PredictionForm} />
                            <Route path="/result/:id" component={Result} />
                            <Route path="/leaderboard" component={Leaderboard} />
+                           <Route path="/admin" component={Admin} />
+                           <Route path="/admin/result/:id" component={ResultsForm} />
                            <Route exact path="*" render={() => <Redirect to="/" />} />
                         </Switch>
                      </Container>
