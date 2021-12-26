@@ -4,10 +4,16 @@ import './scss/base.scss';
 import App from './App';
 
 import './core/interceptors/http.interceptor';
+import { BrowserRouter } from 'react-router-dom';
+import { StoreProvider } from './core/contexts/Store';
 
 ReactDOM.render(
    <React.StrictMode>
-      <App />
+      <BrowserRouter>
+         <StoreProvider>
+            <App />
+         </StoreProvider>
+      </BrowserRouter>
    </React.StrictMode>,
    document.getElementById('root')
 );

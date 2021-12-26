@@ -20,7 +20,7 @@ axios.interceptors.response.use(
       return response;
    },
    function (error) {
-      if (error.response.status === 401) {
+      if (error.response.status === 401 && window.location.pathname !== '/login') {
          window.location.replace(window.location.origin + `/login?redirect_uri=${window.location.href}`);
       }
       return Promise.reject(error);

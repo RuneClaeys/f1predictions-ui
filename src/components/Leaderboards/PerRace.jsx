@@ -5,7 +5,7 @@ const PerRace = () => {
       <Table className="mb-0 " striped>
          <thead>
             <tr className="border-0">
-               <th className="position-sticky bg-light" style={{ left: '0', top: '0', zIndex: '1020' }}>
+               <th className="position-sticky bg-light " style={{ left: '0', top: '0', zIndex: '1020', borderLeft: '0px' }}>
                   Player
                </th>
                {[...Array(20)].map((_, i) => {
@@ -15,7 +15,7 @@ const PerRace = () => {
                      </th>
                   );
                })}
-               <th className="position-sticky bg-light" style={{ right: '0', top: '0', zIndex: '1020' }}>
+               <th className="position-sticky bg-light" style={{ right: '0', top: '0', zIndex: '1020', borderRight: '0px' }}>
                   Total
                </th>
             </tr>
@@ -24,7 +24,7 @@ const PerRace = () => {
             {[...Array(15)].map((_, i) => {
                return (
                   <tr key={i}>
-                     <td className="position-sticky bg-white text-nowrap" style={{ left: '0' }}>
+                     <td className="position-sticky bg-white text-nowrap" style={{ left: '0', borderLeft: '0px' }}>
                         Thibault D.
                      </td>
                      {[...Array(20)].map((_, j) => {
@@ -34,7 +34,7 @@ const PerRace = () => {
                            </td>
                         );
                      })}
-                     <td className="position-sticky bg-white text-center" style={{ right: '0' }}>
+                     <td className="position-sticky bg-white text-center" style={{ right: '0', borderRight: '0px' }}>
                         <strong>98</strong>
                      </td>
                   </tr>

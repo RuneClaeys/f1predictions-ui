@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import { Prompt, useHistory, useParams } from 'react-router';
@@ -10,6 +10,7 @@ import { useNavbar } from '../core/hooks/useNavbar';
 import QualifyingForm from '../components/GeneralForm/QualifyingForm';
 import RaceForm from '../components/GeneralForm/RaceForm';
 import ExtraForm from '../components/GeneralForm/ExtraForm';
+import { useGet } from '../core/hooks/useGet';
 
 const ResultsForm = () => {
    const [enableValidation, setEnableValidation] = React.useState(false);
@@ -18,18 +19,28 @@ const ResultsForm = () => {
    const { id } = useParams();
    const { push, goBack } = useHistory();
 
-   useNavbar({
-      leftAction: goBack,
-      leftActionIcon: 'fa-arrow-left',
-      showBottomNav: false,
-   });
+   const { data: grandPrix } = useGet(`${API_GRAND_PRIX}/${id}`);
+
+   const navbar = useMemo(
+      () => ({
+         title: `${grandPrix?.name} - Results` || 'Loading...',
+         leftAction: goBack,
+         leftActionIcon: 'fa-arrow-left',
+         showBottomNav: false,
+      }),
+      [grandPrix]
+   );
+
+   useNavbar(navbar);
 
    const { fetch, loading } = usePost();
 
    async function handleSubmitPrediction(prediction) {
       await fetch(API_GRAND_PRIX + `/${id}` + API_RESULTS, {
          result_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value })),
-      }).then(() => push('/admin'));
+      }).then(() => {
+         push('/admin');
+      });
    }
 
    async function handleNext(validateForm) {
@@ -54,9 +65,9 @@ const ResultsForm = () => {
          initialValues={{}}
          onSubmit={handleSubmitPrediction}
       >
-         {({ handleSubmit, handleChange, values, errors, validateForm, dirty }) => (
+         {({ handleSubmit, handleChange, values, errors, validateForm, dirty, submitCount }) => (
             <>
-               <Prompt when={dirty} message="You have unsaved changes, are you sure you want to leave?" />
+               <Prompt when={dirty && submitCount < 1} message="You have unsaved changes, are you sure you want to leave?" />
                <Form
                   noValidate
                   onSubmit={(e) => {

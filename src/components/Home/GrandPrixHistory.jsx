@@ -1,4 +1,4 @@
-import { format, fromUnixTime } from 'date-fns';
+import { format } from 'date-fns';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Placeholder from 'react-bootstrap/Placeholder';
@@ -31,22 +31,21 @@ const GrandPrixHistory = ({ overview, loading }) => {
          ) : (
             <ListGroup as="ol" reversed>
                {overview.grand_prix
-                  .filter((gp) => fromUnixTime(gp.qualifying_start_timestamp) < new Date())
+                  .filter((gp) => gp.qualifying_start_timestamp < new Date())
                   .map((gp, i) => {
                      return (
                         <ListGroup.Item key={gp.id} as="li" className="d-flex justify-content-between align-items-start">
                            <NavLink to={'/result/' + gp.id} className="w-100 text-decoration-none text-black">
                               <Row className="w-100">
-                                 <Col className="d-flex align-items-center justify-content-center" xs={2}>
-                                    <strong>{i}</strong>
+                                 <Col className="d-flex align-items-center justify-content-center" xs={3}>
+                                    <strong>{gp.event}</strong>
                                  </Col>
-                                 <Col xs={9}>
+                                 <Col xs={8}>
                                     <h6 className="p-0 mb-1">{gp.name}</h6>
-
-                                    <p className="m-0">{format(fromUnixTime(gp.qualifying_start_timestamp), 'dd/MM/yyyy HH:mm:ss')}</p>
+                                    <p className="m-0">{format(gp.qualifying_start_timestamp, 'dd/MM/yyyy HH:mm:ss')}</p>
                                  </Col>
                                  <Col xs={1} className="d-flex align-items-center">
-                                    <span>{gp?.userPrediction?.total_points || '-'}</span>
+                                    <span>{gp?.user_prediction?.total_points || '-'}</span>
                                  </Col>
                               </Row>
                            </NavLink>

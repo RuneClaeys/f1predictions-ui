@@ -9,6 +9,21 @@ export function usePost() {
    const fetch = React.useCallback(async (url, body, fetchOptions) => {
       setLoading(true);
 
+      function getMessage(error) {
+         let message = 'Er is iets fout gegaan';
+
+         switch (error?.response?.status) {
+            case 401:
+               return (message = null);
+            case 403:
+               return (message = 'U hebt geen toegang tot die gegevens');
+            case 400:
+               return (message = 'Die gegevens bestaan niet of konden niet worden opgevraagd');
+            default:
+               return (message = import.meta.env.MODE === 'prod' ? 'Er is iets fout gegaan' : error?.message);
+         }
+      }
+
       return await axios
          .post(`${import.meta.env.VITE_API_BASE_URL}${url}`, body, fetchOptions)
          .then((response) => response.data)
@@ -16,7 +31,23 @@ export function usePost() {
             setData(response);
             return response;
          })
-         .catch((error) => setError(error))
+         .catch((error) => {
+            setError(error);
+
+            if (error?.response?.status !== 401) {
+               dispatch({
+                  type: 'NOTIFY',
+                  payload: {
+                     id: new Date().getTime(),
+                     text: getMessage(error),
+                     delay: 5000,
+                     type: 'danger',
+                  },
+               });
+            }
+
+            return error;
+         })
          .finally(() => setLoading(false));
    }, []);
 

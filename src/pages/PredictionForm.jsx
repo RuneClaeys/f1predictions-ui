@@ -54,9 +54,9 @@ const PredictionForm = () => {
          initialValues={{}}
          onSubmit={handleSubmitPrediction}
       >
-         {({ handleSubmit, handleChange, values, errors, validateForm, dirty }) => (
+         {({ handleSubmit, handleChange, values, errors, validateForm, dirty, submitCount }) => (
             <>
-               <Prompt when={dirty} message="You have unsaved changes, are you sure you want to leave?" />
+               <Prompt when={dirty && submitCount < 1} message="You have unsaved changes, are you sure you want to leave?" />
                <Form
                   noValidate
                   onSubmit={(e) => {

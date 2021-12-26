@@ -11,20 +11,28 @@ import GrandPrixHistory from '../components/Home/GrandPrixHistory';
 const Home = () => {
    const { data: overview, loading } = useGet(API_RESULTS, { initialValue: { grand_prix: [] } });
 
+   const OVERVIEW = useMemo(
+      () => ({
+         ...overview,
+         grand_prix: overview.grand_prix.map((gp) => ({ ...gp, qualifying_start_timestamp: new Date(gp.qualifying_start_timestamp) })),
+      }),
+      [overview]
+   );
+
    const prevGP = useMemo(() => {
-      const dates = overview.grand_prix
-         .filter((gp) => fromUnixTime(gp.qualifying_start_timestamp) < new Date())
-         .sort((a, b) => fromUnixTime(a.qualifying_start_timestamp) - fromUnixTime(b.qualifying_start_timestamp));
+      const dates = OVERVIEW.grand_prix
+         .filter((gp) => gp.qualifying_start_timestamp < new Date())
+         .sort((a, b) => a.qualifying_start_timestamp - b.qualifying_start_timestamp);
       return dates[dates.length - 1];
-   }, [overview]);
+   }, [OVERVIEW]);
 
    const nextGP = useMemo(() => {
-      const dates = overview.grand_prix.filter((gp) => fromUnixTime(gp.qualifying_start_timestamp) > new Date());
+      const dates = OVERVIEW.grand_prix.filter((gp) => gp.qualifying_start_timestamp > new Date());
       return dates[dates.length - 1];
-   }, [overview]);
+   }, [OVERVIEW]);
 
    const showcaseGP = useMemo(() => {
-      if (nextGP && differenceInDays(fromUnixTime(nextGP.qualifying_start_timestamp), new Date()) <= 3) {
+      if (nextGP && differenceInDays(nextGP.qualifying_start_timestamp, new Date()) <= 2) {
          return nextGP;
       }
       return prevGP;
