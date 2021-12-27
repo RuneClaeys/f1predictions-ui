@@ -4,7 +4,6 @@ import Placeholder from 'react-bootstrap/Placeholder';
 
 import { useHistory } from 'react-router';
 import { format } from 'date-fns';
-import { fromUnixTime } from 'date-fns';
 
 const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
    const { push } = useHistory();
@@ -30,7 +29,7 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
                   {isUpcomming ? (
                      <Card.Text>
                         Next up is the {showcaseGP.name}, who's going to win? Submit your predictions before{' '}
-                        <strong>{format(fromUnixTime(showcaseGP.qualifying_start_timestamp), 'dd/MM HH:mm')}</strong>!
+                        <strong>{format(new Date(showcaseGP.qualifying_start_timestamp), 'dd/MM HH:mm')}</strong>!
                      </Card.Text>
                   ) : (
                      <Card.Text>The {showcaseGP.name} has passed. Did you predict the outcome? Check your results now!</Card.Text>

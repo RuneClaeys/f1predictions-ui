@@ -9,3 +9,20 @@
       display: none;
    }
 }
+
+.app__toaster {
+   position: fixed;
+   bottom: 70px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: auto;
+   max-width: 600px;
+
+   @include media-breakpoint-up(lg) {
+      bottom: unset;
+      transform: unset;
+      left: unset;
+      top: 100px;
+      right: 20px;
+   }
+}

@@ -29,14 +29,14 @@ const LoadingList = () => {
    );
 };
 
-const List = ({ grandPrix, nav = false }) => {
+const List = ({ grandPrix, upcomming = false }) => {
    return (
       <ListGroup as="ol">
          {grandPrix.map((gp) => {
             return (
                <ListGroup.Item key={gp.id} as="li" className="d-flex justify-content-between align-items-start p-0">
                   <NavLink
-                     to={nav ? '/result/' + gp.id : ''}
+                     to={!upcomming ? '/result/' + gp.id : `/prediction/` + gp.id}
                      className="d-flex align-items-center w-100 text-decoration-none text-black px-2"
                   >
                      <strong className="text-nowrap p-2">{gp.event}</strong>
@@ -58,13 +58,13 @@ const GrandPrixHistory = ({ overview, loading }) => {
    const historyGPs = useMemo(() => {
       return overview.grand_prix
          .filter((gp) => gp.qualifying_start_timestamp < new Date())
-         .sort((a, b) => a.qualifying_start_timestamp > b.qualifying_start_timestamp);
+         .sort((a, b) => a.qualifying_start_timestamp - b.qualifying_start_timestamp);
    }, [overview]);
 
    const upcommingGPs = useMemo(() => {
       return overview.grand_prix
          .filter((gp) => gp.qualifying_start_timestamp > new Date())
-         .sort((a, b) => a.qualifying_start_timestamp > b.qualifying_start_timestamp);
+         .sort((a, b) => a.qualifying_start_timestamp - b.qualifying_start_timestamp);
    }, [overview]);
 
    return (
@@ -79,9 +79,9 @@ const GrandPrixHistory = ({ overview, loading }) => {
          ) : (
             <>
                {historyGPs.length > 0 && <h5 className="mb-3">History</h5>}
-               <List grandPrix={historyGPs || []} nav />
+               <List grandPrix={historyGPs || []} />
                {upcommingGPs.length > 0 && <h5 className="my-3">Upcomming</h5>}
-               <List grandPrix={upcommingGPs || []} />
+               <List grandPrix={upcommingGPs || []} upcomming />
             </>
          )}
       </div>

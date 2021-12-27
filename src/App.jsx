@@ -18,6 +18,7 @@ import { useStore } from './core/hooks/useStore';
 import { useGet } from './core/hooks/useGet';
 import { useEffect } from 'react';
 import { API_DRIVERS, API_GRAND_PRIX, API_SEASONS } from './core/endpoints/endpoints';
+import Settings from './pages/Settings';
 
 const App = () => {
    const { state, dispatch } = useStore();
@@ -38,7 +39,7 @@ const App = () => {
             <div className="app__navbar sticky-top">
                <Navbar />
             </div>
-            <Container className="my-3" style={{ minHeight: `calc(100vh - 134px)` }}>
+            <Container className="py-3" style={{ minHeight: `calc(100vh - 100px)` }}>
                <Switch>
                   <Route path="/login" component={SignIn} />
                   <Route exact path="/" component={Home} />
@@ -47,6 +48,7 @@ const App = () => {
                   <Route exact path="/leaderboard" component={Leaderboard} />
                   <Route exact path="/admin" component={Admin} />
                   <Route exact path="/admin/result/:id" component={ResultsForm} />
+                  <Route exact path="/settings" component={Settings} />
                   <Route exact path="*" render={() => <Redirect to="/" />} />
                </Switch>
             </Container>
@@ -56,10 +58,7 @@ const App = () => {
                </div>
             )}
          </Stack>
-         <div
-            className="fixed-bottom"
-            style={{ bottom: '70px', left: '50%', transform: 'translateX(-50%)', width: '90vw', maxWidth: '600px' }}
-         >
+         <div className="app__toaster">
             <Toaster />
          </div>
       </div>

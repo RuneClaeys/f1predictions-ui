@@ -1,13 +1,12 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useStore } from '../../core/hooks/useStore';
 
-const QualifyingForm = ({ handleChange, errors, values, onNext, disabled, mode = 'prediction' }) => {
+const QualifyingForm = ({ handleChange, errors, values, disabled }) => {
    const { drivers } = useStore().state;
 
    return (
-      <div className="d-flex flex-column" style={{ paddingBottom: '80px' }}>
+      <div className="d-flex flex-column">
          <h2>Qualifying</h2>
 
          {[...Array(5)].map((_, i) => {
@@ -36,13 +35,6 @@ const QualifyingForm = ({ handleChange, errors, values, onNext, disabled, mode =
                </Form.Group>
             );
          })}
-
-         <div className="d-flex p-4 w-100 flex-column position-fixed bg-white" style={{ bottom: 0, left: 0 }}>
-            <Button onClick={onNext} variant="primary px-5" type="button" disabled={disabled}>
-               {mode === 'prediction' ? <span className="me-3">Race predictions</span> : <span className="me-3">Race results</span>}
-               <i className="fas fa-arrow-right"></i>
-            </Button>
-         </div>
       </div>
    );
 };

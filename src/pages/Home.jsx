@@ -39,7 +39,7 @@ const Home = () => {
    }, [prevGP, nextGP]);
 
    return (
-      <div gap={4} className="mb-5 home">
+      <div gap={4} className="home">
          <div className="home__showcase">
             <ShowcaseGP showcaseGP={showcaseGP} isUpcomming={showcaseGP?.id === nextGP?.id} loading={loading} />
          </div>

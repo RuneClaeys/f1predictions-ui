@@ -1,9 +1,8 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useStore } from '../../core/hooks/useStore';
 
-const RaceForm = ({ handleChange, errors, values, disabled, onNext, onPrev }) => {
+const RaceForm = ({ handleChange, errors, values, disabled }) => {
    const { drivers } = useStore().state;
 
    return (
@@ -36,17 +35,6 @@ const RaceForm = ({ handleChange, errors, values, disabled, onNext, onPrev }) =>
                </Form.Group>
             );
          })}
-
-         <div className="d-flex p-4 w-100 position-fixed bg-white gap-4" style={{ bottom: 0, left: 0 }}>
-            <Button onClick={onPrev} variant="outline-primary" type="button" className="col" disabled={disabled}>
-               <i className="fas fa-arrow-left"></i>
-               <span className="ms-3">Back</span>
-            </Button>
-            <Button onClick={onNext} variant="primary" type="button" className="col-7" disabled={disabled}>
-               <span className="me-3">Next</span>
-               <i className="fas fa-arrow-right"></i>
-            </Button>
-         </div>
       </div>
    );
 };

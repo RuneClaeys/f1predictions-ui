@@ -1,0 +1,17 @@
+.form-container {
+   display: flex;
+   justify-content: center;
+
+   form {
+      max-width: 600px;
+      width: 100%;
+   }
+
+   @include media-breakpoint-up(lg) {
+      form {
+         border: 1px solid var(--bs-gray-300);
+         padding: 1rem;
+         border-radius: 0.3rem;
+      }
+   }
+}

@@ -22,7 +22,7 @@
 
    @include media-breakpoint-up(lg) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(2, auto);
+      grid-template-rows: auto 1fr;
       grid-template-areas:
          'showcase history'
          'total history';
