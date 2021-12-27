@@ -27,7 +27,7 @@ const OtherResults = ({ open, grandPrix }) => {
             <table className="table mt-2">
                <thead>
                   <tr>
-                     <th className=" px-2">Prediction</th>
+                     <th className="px-2">Prediction</th>
                      <th className="text-nowrap px-2 ">Result</th>
                      <th className="text-nowrap px-2 text-center">Points</th>
                   </tr>
@@ -39,11 +39,11 @@ const OtherResults = ({ open, grandPrix }) => {
                      </th>
                   </tr>
                   <tr>
-                     <td className="p-2">
-                        {firstDNF?.driver?.first_name} {firstDNF?.driver?.last_name}
+                     <td className="p-2 text-nowrap">
+                        {firstDNF?.driver?.first_name.charAt(0)}. {firstDNF?.driver?.last_name}
                      </td>
-                     <td className="p-2 ">
-                        {firstDNFResult?.driver?.first_name} {firstDNFResult?.driver?.last_name}
+                     <td className="p-2 text-nowrap">
+                        {firstDNFResult?.driver?.first_name.charAt(0)}. {firstDNFResult?.driver?.last_name}
                      </td>
                      <td className="p-2 text-center">{firstDNF?.points}</td>
                   </tr>
@@ -53,11 +53,11 @@ const OtherResults = ({ open, grandPrix }) => {
                      </th>
                   </tr>
                   <tr>
-                     <td className="p-2">
-                        {fastestLap?.driver?.first_name} {fastestLap?.driver?.last_name}
+                     <td className="p-2 text-nowrap">
+                        {fastestLap?.driver?.first_name.charAt(0)}. {fastestLap?.driver?.last_name}
                      </td>
-                     <td className="p-2 ">
-                        {fastestLapResult?.driver?.first_name} {fastestLapResult?.driver?.last_name}
+                     <td className="p-2 text-nowrap ">
+                        {fastestLapResult?.driver?.first_name.charAt(0)}. {fastestLapResult?.driver?.last_name}
                      </td>
                      <td className="p-2 text-center">{fastestLap?.points}</td>
                   </tr>
