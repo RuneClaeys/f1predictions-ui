@@ -4,13 +4,16 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useStore } from '../core/hooks/useStore';
 import { useHistory } from 'react-router-dom';
+import { useMemo } from 'react';
+import { useNavbar } from '../core/hooks/useNavbar';
 
 const Admin = () => {
    const [gp, setGP] = useState();
-
    const { grandPrix } = useStore().state;
-
    const { push } = useHistory();
+
+   const navBarOptions = useMemo(() => ({ title: 'Manage' }), []);
+   useNavbar(navBarOptions);
 
    return (
       <Stack gap={4}>
