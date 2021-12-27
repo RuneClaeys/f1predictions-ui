@@ -34,6 +34,11 @@ const Navbar = () => {
                   </Nav.Link>
                </Nav.Item>
                <Nav.Item as="li">
+                  <Nav.Link to="/settings" className="text-white" activeClassName="fw-bold" as={NavLink}>
+                     Settings
+                  </Nav.Link>
+               </Nav.Item>
+               <Nav.Item as="li">
                   <Nav.Link to="/admin" className="text-white" activeClassName="fw-bold" as={NavLink}>
                      Admin
                   </Nav.Link>
