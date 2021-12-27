@@ -1,0 +1,11 @@
+.app {
+}
+
+.app__navbar {
+}
+
+.app__bottom-navbar {
+   @include media-breakpoint-up(lg) {
+      display: none;
+   }
+}

@@ -1,0 +1,10 @@
+.leaderboard {
+   .nav-item .nav-link {
+      color: var(--bs-primary);
+
+      &.active {
+         color: var(--bs-white);
+         background-color: var(--bs-primary);
+      }
+   }
+}

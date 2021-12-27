@@ -1,6 +1,5 @@
 import React from 'react';
-import { useMemo, useEffect } from 'react';
-import Stack from 'react-bootstrap/Stack';
+import { useMemo } from 'react';
 
 import { useHistory, useParams } from 'react-router';
 import OtherResults from '../components/Results/OtherResults';
@@ -23,7 +22,6 @@ const Result = () => {
          title: grandPrix?.name || 'Loading...',
          leftAction: goBack,
          leftActionIcon: 'fa-arrow-left',
-         showBottomNav: false,
       }),
       [grandPrix]
    );
@@ -31,28 +29,36 @@ const Result = () => {
    useNavbar(navbar);
 
    return (
-      <Stack gap={3} className="mb-5">
+      <>
          {grandPrix?.user_prediction || loading ? (
-            <>
-               <TotalPoints
-                  results={{
-                     qualifying_points: grandPrix?.user_prediction?.qualifying_points,
-                     race_points: grandPrix?.user_prediction?.race_points,
-                     other_points: grandPrix?.user_prediction?.other_points,
-                     total_points: grandPrix?.user_prediction?.total_points,
-                  }}
-                  loading={loading}
-               />
-               <QualifyingResults grandPrix={grandPrix} open={true} />
-               <RaceResults grandPrix={grandPrix} open={false} />
-               <OtherResults grandPrix={grandPrix} open={false} />
-            </>
+            <div className="result">
+               <div className="result__total">
+                  <TotalPoints
+                     results={{
+                        qualifying_points: grandPrix?.user_prediction?.qualifying_points,
+                        race_points: grandPrix?.user_prediction?.race_points,
+                        other_points: grandPrix?.user_prediction?.other_points,
+                        total_points: grandPrix?.user_prediction?.total_points,
+                     }}
+                     loading={loading}
+                  />
+               </div>
+               <div className="result__quali">
+                  <QualifyingResults grandPrix={grandPrix} open={true} />
+               </div>
+               <div className="result__race">
+                  <RaceResults grandPrix={grandPrix} open={false} />
+               </div>
+               <div className="result__other">
+                  <OtherResults grandPrix={grandPrix} open={false} />
+               </div>
+            </div>
          ) : (
             <div>
                <center>You do not have a prediction for this gp.</center>
             </div>
          )}
-      </Stack>
+      </>
    );
 };
 

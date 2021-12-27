@@ -31,13 +31,13 @@ const QualifyingResults = ({ grandPrix, open }) => {
                <tbody>
                   {qualifyingPredictions?.map((prediction, i) => (
                      <tr key={i}>
-                        <td className="p-2 text-nowrap">
+                        <td className="p-2 ">
                            <strong>{i + 1}. </strong>
                            <span>
                               {prediction?.driver?.first_name.charAt(0)} {prediction?.driver?.last_name}
                            </span>
                         </td>
-                        <td className="p-2 text-nowrap">
+                        <td className="p-2 ">
                            {qualifyingResults[i]?.driver?.first_name.charAt(0)}. {qualifyingResults[i]?.driver?.last_name}
                         </td>
                         <td className="p-2 text-center">{prediction?.points}</td>

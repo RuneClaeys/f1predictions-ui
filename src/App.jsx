@@ -33,9 +33,9 @@ const App = () => {
    }, [fetch]);
 
    return (
-      <>
+      <div className="app">
          <Stack style={{ width: '100vw' }}>
-            <div className="sticky-top">
+            <div className="app__navbar sticky-top">
                <Navbar />
             </div>
             <Container className="my-3" style={{ minHeight: `calc(100vh - 134px)` }}>
@@ -51,7 +51,7 @@ const App = () => {
                </Switch>
             </Container>
             {state.navbar.showBottomNav && (
-               <div className="position-sticky" style={{ bottom: '0', width: '100vw' }}>
+               <div className="app__bottom-navbar position-sticky" style={{ bottom: '0', width: '100vw' }}>
                   <BottomNavBar />
                </div>
             )}
@@ -62,7 +62,7 @@ const App = () => {
          >
             <Toaster />
          </div>
-      </>
+      </div>
    );
 };
 

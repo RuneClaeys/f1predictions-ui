@@ -39,10 +39,10 @@ const OtherResults = ({ open, grandPrix }) => {
                      </th>
                   </tr>
                   <tr>
-                     <td className="p-2 text-nowrap">
+                     <td className="p-2">
                         {firstDNF?.driver?.first_name.charAt(0)}. {firstDNF?.driver?.last_name}
                      </td>
-                     <td className="p-2 text-nowrap">
+                     <td className="p-2">
                         {firstDNFResult?.driver?.first_name.charAt(0)}. {firstDNFResult?.driver?.last_name}
                      </td>
                      <td className="p-2 text-center">{firstDNF?.points}</td>
@@ -53,10 +53,10 @@ const OtherResults = ({ open, grandPrix }) => {
                      </th>
                   </tr>
                   <tr>
-                     <td className="p-2 text-nowrap">
+                     <td className="p-2">
                         {fastestLap?.driver?.first_name.charAt(0)}. {fastestLap?.driver?.last_name}
                      </td>
-                     <td className="p-2 text-nowrap ">
+                     <td className="p-2">
                         {fastestLapResult?.driver?.first_name.charAt(0)}. {fastestLapResult?.driver?.last_name}
                      </td>
                      <td className="p-2 text-center">{fastestLap?.points}</td>

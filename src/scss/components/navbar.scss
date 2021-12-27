@@ -1,0 +1,26 @@
+.navbar__content {
+   width: 100%;
+
+   text-align: center;
+
+   @include media-breakpoint-up(lg) {
+      text-align: start;
+
+      h4 {
+         width: auto;
+      }
+   }
+}
+
+.navbar__nav {
+   display: none;
+   @include media-breakpoint-up(lg) {
+      display: flex;
+   }
+}
+
+.navbar__action {
+   @include media-breakpoint-up(lg) {
+      display: none !important;
+   }
+}

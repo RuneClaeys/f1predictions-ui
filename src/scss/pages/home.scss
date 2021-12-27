@@ -1,0 +1,30 @@
+.home {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: repeat(3, auto);
+   grid-template-areas:
+      'showcase'
+      'total'
+      'history';
+   gap: 1rem;
+
+   &__showcase {
+      grid-area: showcase;
+   }
+
+   &__total {
+      grid-area: total;
+   }
+
+   &__history {
+      grid-area: history;
+   }
+
+   @include media-breakpoint-up(lg) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(2, auto);
+      grid-template-areas:
+         'showcase history'
+         'total history';
+   }
+}

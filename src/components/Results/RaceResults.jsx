@@ -31,13 +31,13 @@ const RaceResults = ({ grandPrix, open }) => {
                <tbody>
                   {racePredictions?.map((prediction, i) => (
                      <tr key={i}>
-                        <td className="p-2 text-nowrap">
+                        <td className="p-2">
                            <strong>{i + 1}. </strong>
                            <span>
                               {prediction?.driver?.first_name.charAt(0)}. {prediction?.driver?.last_name}
                            </span>
                         </td>
-                        <td className="p-2  text-nowrap">
+                        <td className="p-2">
                            {raceResults[i]?.driver?.first_name.charAt(0)}. {raceResults[i]?.driver?.last_name}
                         </td>
                         <td className="p-2 text-center">{prediction?.points}</td>
