@@ -26,9 +26,9 @@
       grid-template-areas:
          'history showcase'
          'history total';
-   }
 
-   &__showcase {
-      margin-top: 2.5rem;
+      &__showcase {
+         margin-top: 2.5rem;
+      }
    }
 }

@@ -25,7 +25,7 @@ const Toaster = () => {
          <Toast
             show={!!notification}
             autohide
-            delay={99999}
+            delay={notification?.delay || 5000}
             onClose={() => removeToast(notification)}
             bg={notification?.type || 'primary'}
             className="text-white"
