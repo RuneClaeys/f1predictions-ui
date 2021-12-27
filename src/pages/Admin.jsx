@@ -12,34 +12,36 @@ const Admin = () => {
    const { grandPrix } = useStore().state;
    const { push } = useHistory();
 
-   const navBarOptions = useMemo(() => ({ title: 'Manage' }), []);
+   const navBarOptions = useMemo(() => ({ title: 'Admin' }), []);
    useNavbar(navBarOptions);
 
    return (
-      <Stack gap={4}>
-         <h4>Manage application</h4>
+      <div className="form-container">
+         <Stack gap={4}>
+            <h4>Manage application</h4>
 
-         <div>
-            <h5>Enter a GP result</h5>
-            <div className="row">
-               <Form.Group className="col-7">
-                  <Form.Control as="select" name={`gp`} value={gp} onChange={(e) => setGP(e.target.value)}>
-                     <option>Choose GP</option>
-                     {grandPrix.map((gp) => {
-                        return (
-                           <option key={gp.id} value={gp.id}>
-                              {gp.name}
-                           </option>
-                        );
-                     })}
-                  </Form.Control>
-               </Form.Group>
-               <Button disabled={!gp} className="col-4" onClick={() => push('/admin/result/' + gp)}>
-                  Enter
-               </Button>
+            <div>
+               <h5>Enter a GP result</h5>
+               <div className="row">
+                  <Form.Group className="col-7">
+                     <Form.Control as="select" name={`gp`} value={gp} onChange={(e) => setGP(e.target.value)}>
+                        <option>Choose GP</option>
+                        {grandPrix.map((gp) => {
+                           return (
+                              <option key={gp.id} value={gp.id}>
+                                 {gp.name}
+                              </option>
+                           );
+                        })}
+                     </Form.Control>
+                  </Form.Group>
+                  <Button disabled={!gp} className="col-4" onClick={() => push('/admin/result/' + gp)}>
+                     Enter
+                  </Button>
+               </div>
             </div>
-         </div>
-      </Stack>
+         </Stack>
+      </div>
    );
 };
 
