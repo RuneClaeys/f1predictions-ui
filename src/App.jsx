@@ -21,6 +21,10 @@ const Admin = React.lazy(() => import('./pages/Admin'));
 const Settings = React.lazy(() => import('./pages/Settings'));
 const ResultsForm = React.lazy(() => import('./pages/ResultsForm'));
 
+import { useRegisterSW } from 'virtual:pwa-register/react';
+import ReloadPrompt from './components/ReloadPrompt';
+const intervalMS = 60 * 60 * 1000;
+
 const Fallback = () => {
    return (
       <div className="d-flex align-items-center justify-content-center" style={{ width: '100vw', height: '100vh' }}>
@@ -43,6 +47,15 @@ const App = () => {
          dispatch({ type: 'SET_CURRENT_SEASON', payload: seasons.find((season) => season.year == new Date().getFullYear()) });
       });
    }, [fetch]);
+
+   const updateServiceWorker = useRegisterSW({
+      onRegistered(r) {
+         r &&
+            setInterval(() => {
+               r.update();
+            }, intervalMS);
+      },
+   });
 
    return (
       <Suspense fallback={<Fallback />}>
@@ -73,6 +86,7 @@ const App = () => {
             <div className="app__toaster">
                <Toaster />
             </div>
+            <ReloadPrompt />
          </div>
       </Suspense>
    );
