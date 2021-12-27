@@ -2,11 +2,12 @@ import React, { useMemo } from 'react';
 import Stack from 'react-bootstrap/Stack';
 import { differenceInDays, fromUnixTime } from 'date-fns';
 
-import ShowcaseGP from '../components/Home/ShowcaseGP';
 import { useGet } from '../core/hooks/useGet';
 import { API_RESULTS } from '../core/endpoints/endpoints';
-import TotalPoints from '../components/TotalPoints';
-import GrandPrixHistory from '../components/Home/GrandPrixHistory';
+
+const TotalPoints = React.lazy(() => import('../components/TotalPoints'));
+const ShowcaseGP = React.lazy(() => import('../components/Home/ShowcaseGP'));
+const GrandPrixHistory = React.lazy(() => import('../components/Home/GrandPrixHistory'));
 
 const Home = () => {
    const { data: overview, loading } = useGet(API_RESULTS, { initialValue: { grand_prix: [] } });

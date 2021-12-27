@@ -1,10 +1,11 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Stack from 'react-bootstrap/Stack';
-import PerRace from '../components/Leaderboards/PerRace';
-import Summary from '../components/Leaderboards/Summary';
 import { useNavbar } from '../core/hooks/useNavbar';
+
+const PerRace = React.lazy(() => import('../components/Leaderboards/PerRace'));
+const Summary = React.lazy(() => import('../components/Leaderboards/Summary'));
 
 const Leaderboard = () => {
    const navBarOptions = useMemo(() => ({ title: 'Leaderboard' }), []);

@@ -2,13 +2,14 @@ import React from 'react';
 import { useMemo } from 'react';
 
 import { useHistory, useParams } from 'react-router';
-import OtherResults from '../components/Results/OtherResults';
-import QualifyingResults from '../components/Results/QualifyingResults';
-import RaceResults from '../components/Results/RaceResults';
-import TotalPoints from '../components/TotalPoints';
 import { API_GRAND_PRIX } from '../core/endpoints/endpoints';
 import { useGet } from '../core/hooks/useGet';
 import { useNavbar } from '../core/hooks/useNavbar';
+
+const OtherResults = React.lazy(() => import('../components/Results/OtherResults'));
+const QualifyingResults = React.lazy(() => import('../components/Results/QualifyingResults'));
+const RaceResults = React.lazy(() => import('../components/Results/RaceResults'));
+const TotalPoints = React.lazy(() => import('../components/TotalPoints'));
 
 const Result = () => {
    const { id } = useParams();

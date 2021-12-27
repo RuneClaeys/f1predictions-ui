@@ -8,12 +8,14 @@ import validationSchema from '../core/validation-schemas/predictionSchema';
 import { usePost } from '../core/hooks/usePost';
 import { API_GRAND_PRIX, API_RESULTS } from '../core/endpoints/endpoints';
 import { useNavbar } from '../core/hooks/useNavbar';
-import QualifyingForm from '../components/GeneralForm/QualifyingForm';
-import RaceForm from '../components/GeneralForm/RaceForm';
-import ExtraForm from '../components/GeneralForm/ExtraForm';
+
 import { useGet } from '../core/hooks/useGet';
 import { useStore } from '../core/hooks/useStore';
 import { useEffect } from 'react';
+
+const QualifyingForm = React.lazy(() => import('../components/GeneralForm/QualifyingForm'));
+const RaceForm = React.lazy(() => import('../components/GeneralForm/RaceForm'));
+const ExtraForm = React.lazy(() => import('../components/GeneralForm/ExtraForm'));
 
 const ResultsForm = () => {
    const [enableValidation, setEnableValidation] = React.useState(false);
