@@ -36,18 +36,15 @@ const GrandPrixHistory = ({ overview, loading }) => {
                      return (
                         <ListGroup.Item key={gp.id} as="li" className="d-flex justify-content-between align-items-start">
                            <NavLink to={'/result/' + gp.id} className="w-100 text-decoration-none text-black">
-                              <Row className="w-100">
-                                 <Col className="d-flex align-items-center justify-content-center" xs={3}>
-                                    <strong>{gp.event}</strong>
-                                 </Col>
-                                 <Col xs={8}>
-                                    <h6 className="p-0 mb-1">{gp.name}</h6>
-                                    <p className="m-0">{format(gp.qualifying_start_timestamp, 'dd/MM/yyyy HH:mm:ss')}</p>
-                                 </Col>
-                                 <Col xs={1} className="d-flex align-items-center">
-                                    <span>{gp?.user_prediction?.total_points || '-'}</span>
-                                 </Col>
-                              </Row>
+                              <div className="row align-items-center">
+                                 <strong className="col text-nowrap">{gp.event}</strong>
+
+                                 <div className="col-7 d-flex flex-column">
+                                    <h6>{gp.name}</h6>
+                                    <small className="m-0">{format(gp.qualifying_start_timestamp, 'dd/MM/yyyy HH:mm:ss')}</small>{' '}
+                                 </div>
+                                 <p className="col-2  m-0">{gp?.user_prediction?.total_points || '-'}</p>
+                              </div>
                            </NavLink>
                         </ListGroup.Item>
                      );
