@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './scss/base.scss';
 import App from './App';
 
@@ -7,7 +6,16 @@ import './core/interceptors/http.interceptor';
 import { BrowserRouter } from 'react-router-dom';
 import { StoreProvider } from './core/contexts/Store';
 
-ReactDOM.render(
+import { registerRoute } from 'workbox-routing';
+import { CacheFirst } from 'workbox-strategies';
+import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+
+registerRoute(
+   new RegExp(`^${import.meta.env.VITE_API_BASE_URL}/.*`),
+   new CacheFirst({ plugins: [new CacheableResponsePlugin({ statuses: [0, 200] })] })
+);
+
+Workbox.ReactDOM.render(
    <React.StrictMode>
       <BrowserRouter>
          <StoreProvider>
