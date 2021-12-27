@@ -1,12 +1,13 @@
 import React from 'react';
 import './scss/base.scss';
 import App from './App';
+import ReactDom from 'react-dom';
 
 import './core/interceptors/http.interceptor';
 import { BrowserRouter } from 'react-router-dom';
 import { StoreProvider } from './core/contexts/Store';
 
-ReactDOM.render(
+ReactDom.render(
    <React.StrictMode>
       <BrowserRouter>
          <StoreProvider>
