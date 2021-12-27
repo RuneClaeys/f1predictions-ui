@@ -6,7 +6,7 @@ import './core/interceptors/http.interceptor';
 import { BrowserRouter } from 'react-router-dom';
 import { StoreProvider } from './core/contexts/Store';
 
-Workbox.ReactDOM.render(
+ReactDOM.render(
    <React.StrictMode>
       <BrowserRouter>
          <StoreProvider>
