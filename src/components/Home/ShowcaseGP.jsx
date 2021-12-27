@@ -36,7 +36,7 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
                      <Card.Text>The {showcaseGP.name} has passed. Did you predict the outcome? Check your results now!</Card.Text>
                   )}
 
-                  {isUpcomming ? (
+                  {isUpcomming && !showcaseGP?.user_prediction ? (
                      <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
                         Enter predictions
                      </Button>

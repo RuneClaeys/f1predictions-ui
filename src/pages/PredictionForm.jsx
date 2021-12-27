@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import { Prompt, useHistory, useParams } from 'react-router';
@@ -18,11 +18,16 @@ const PredictionForm = () => {
    const { id } = useParams();
    const { push, goBack } = useHistory();
 
-   useNavbar({
-      leftAction: goBack,
-      leftActionIcon: 'fa-arrow-left',
-      showBottomNav: false,
-   });
+   const options = useMemo(
+      () => ({
+         leftAction: goBack,
+         leftActionIcon: 'fa-arrow-left',
+         showBottomNav: false,
+      }),
+      [goBack]
+   );
+
+   useNavbar(options);
 
    const { fetch, loading } = usePost();
 

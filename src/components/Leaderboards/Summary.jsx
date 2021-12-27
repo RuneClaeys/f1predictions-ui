@@ -52,22 +52,24 @@ const Summary = () => {
             </tbody>
          ) : (
             <tbody>
-               {(results || []).map((result) => {
-                  return (
-                     <tr key={result.id}>
-                        <td>
-                           <span className="me-1">{result?.user?.first_name}</span>
-                           <span>{result?.user?.last_name.charAt(0)}.</span>
-                        </td>
-                        <td className="text-center">{result?.qualifying_points}</td>
-                        <td className="text-center">{result?.race_points}</td>
-                        <td className="text-center">{result?.other_points}</td>
-                        <td className="text-center">
-                           <strong>{result?.total_points}</strong>
-                        </td>
-                     </tr>
-                  );
-               })}
+               {(results || [])
+                  .sort((a, b) => (a.total_points < b.total_points ? 1 : -1))
+                  .map((result) => {
+                     return (
+                        <tr key={result.id}>
+                           <td>
+                              <span className="me-1">{result?.user?.first_name}</span>
+                              <span>{result?.user?.last_name.charAt(0)}.</span>
+                           </td>
+                           <td className="text-center">{result?.qualifying_points}</td>
+                           <td className="text-center">{result?.race_points}</td>
+                           <td className="text-center">{result?.other_points}</td>
+                           <td className="text-center">
+                              <strong>{result?.total_points}</strong>
+                           </td>
+                        </tr>
+                     );
+                  })}
             </tbody>
          )}
       </Table>
