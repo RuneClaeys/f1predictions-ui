@@ -24,7 +24,11 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto 1fr;
       grid-template-areas:
-         'showcase history'
-         'total history';
+         'history showcase'
+         'history total';
+   }
+
+   &__showcase {
+      margin-top: 2.5rem;
    }
 }
