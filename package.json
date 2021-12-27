@@ -6,6 +6,9 @@
       "build": "vite build --mode prod",
       "serve": "vite preview --port 3000"
    },
+   "pre-push": [
+      "build"
+   ],
    "dependencies": {
       "axios": "^0.24.0",
       "bootstrap": "^5.1.3",
