@@ -9,7 +9,7 @@ self.addEventListener('message', (event) => {
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-const apiURL = `^${import.meta.env.VITE_API_BASE_URL}/`;
+const apiURL = `^${import.meta.env.VITE_API_BASE_URL}`;
 
 registerRoute(
    new RegExp(apiURL),
