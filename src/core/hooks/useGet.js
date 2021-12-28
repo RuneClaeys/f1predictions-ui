@@ -10,7 +10,13 @@ export function useGet(url, { initialFetch = true, initialFetchOptions = {}, ini
    const { dispatch } = useStore();
 
    const fetch = React.useCallback(async (url, fetchOptions) => {
-      setLoading(true);
+      let loadingTimeout = null;
+
+      if (loadingTimeout) clearTimeout(loadingTimeout);
+
+      loadingTimeout = setTimeout(() => {
+         setLoading(true);
+      }, 10);
 
       function getMessage(error) {
          let message = 'Er is iets fout gegaan';
@@ -51,7 +57,10 @@ export function useGet(url, { initialFetch = true, initialFetchOptions = {}, ini
 
             return error;
          })
-         .finally(() => setLoading(false));
+         .finally(() => {
+            if (loadingTimeout) clearTimeout(loadingTimeout);
+            setLoading(false);
+         });
    }, []);
 
    React.useEffect(() => {

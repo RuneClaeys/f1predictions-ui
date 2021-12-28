@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { API_DRIVERS, API_GRAND_PRIX, API_SEASONS } from '../endpoints/endpoints';
-import { useGet } from '../hooks/useGet';
+import React from 'react';
 
 const initialNavBar = {
    title: 'F1 Predictions',

@@ -39,14 +39,23 @@ const App = () => {
    const { state, dispatch } = useStore();
    const { fetch } = useGet(null, { initialFetch: false });
 
+   const { current_season } = state;
+
    useEffect(async () => {
       await fetch(API_DRIVERS).then((drivers) => dispatch({ type: 'SET_DRIVERS', payload: drivers }));
-      await fetch(API_GRAND_PRIX).then((grandPrix) => dispatch({ type: 'SET_GRAND_PRIX', payload: grandPrix }));
       await fetch(API_SEASONS).then((seasons) => {
          dispatch({ type: 'SET_SEASONS', payload: seasons });
          dispatch({ type: 'SET_CURRENT_SEASON', payload: seasons.find((season) => season.year == new Date().getFullYear()) });
       });
    }, [fetch]);
+
+   useEffect(async () => {
+      if (current_season) {
+         await fetch(`${API_SEASONS}/${current_season.id}${API_GRAND_PRIX}`).then((grandPrix) =>
+            dispatch({ type: 'SET_GRAND_PRIX', payload: grandPrix })
+         );
+      }
+   }, [current_season]);
 
    const updateServiceWorker = useRegisterSW({
       onRegistered(r) {
