@@ -52,7 +52,10 @@ const App = () => {
    useEffect(async () => {
       if (current_season) {
          await fetch(`${API_SEASONS}/${current_season.id}${API_GRAND_PRIX}`).then((grandPrix) =>
-            dispatch({ type: 'SET_GRAND_PRIX', payload: grandPrix })
+            dispatch({
+               type: 'SET_GRAND_PRIX',
+               payload: grandPrix.sort((a, b) => new Date(a.qualifying_start_timestamp) - new Date(b.qualifying_start_timestamp)),
+            })
          );
       }
    }, [current_season]);
