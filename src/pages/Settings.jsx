@@ -3,16 +3,25 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useCallback, useState } from 'react';
 
+import { cacheNames } from 'workbox-core';
+
 const Settings = () => {
    const [locale, setLocale] = useState('en');
 
    const logout = useCallback(() => {
-      window.location.replace(`${import.meta.env.VITE_API_BASE_URL}/logout`);
+      caches
+         .keys()
+         .then(function (names) {
+            for (let name of names) {
+               if (name.startsWith('workbox-runtime')) {
+                  caches.delete(name);
+               }
+            }
+         })
+         .finally(() => window.location.replace(`${import.meta.env.VITE_API_BASE_URL}/logout`));
    }, []);
 
-   const changeLocale = useCallback(() => {
-      //TODO
-   }, []);
+   const changeLocale = useCallback(() => {}, []);
 
    return (
       <div className="form-container">
