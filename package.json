@@ -23,6 +23,9 @@
       "sass": "^1.43.4",
       "vite": "^2.6.14",
       "vite-plugin-pwa": "^0.11.12",
+      "workbox-cacheable-response": "^6.4.2",
+      "workbox-routing": "^6.4.2",
+      "workbox-strategies": "^6.4.2",
       "workbox-window": "^6.4.2"
    }
 }
