@@ -35,7 +35,7 @@ const Settings = () => {
                      </Form.Control>
                   </Form.Group>
                   <Button className="col-4" onClick={() => changeLocale()}>
-                     Change language
+                     Change
                   </Button>
                </div>
             </div>

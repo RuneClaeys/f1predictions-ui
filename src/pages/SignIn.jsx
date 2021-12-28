@@ -26,24 +26,26 @@ const SignIn = () => {
    useNavbar(navbar);
 
    return (
-      <Stack className="display:flex; align-items-center p-4 mt-4">
-         <center>
-            <h3 className="mb-4">Welcome to F1 Predictions</h3>
-         </center>
-
-         <center className="mb-5 pb-4">
-            Please login using your Google account by clicking the button below.
-            <br />
-         </center>
-         <Button onClick={handleSignIn} variant="primary w-100 mb-2">
+      <div className="form-container">
+         <Stack className="display:flex; align-items-center p-4 mt-4">
             <center>
-               <span>Login with Google</span>
+               <h3 className="mb-4">Welcome to F1 Predictions</h3>
             </center>
-         </Button>
-         <center>
-            <small> We'll never share your data with anyone.</small>
-         </center>
-      </Stack>
+
+            <center className="mb-5 pb-4">
+               Please login using your Google account by clicking the button below.
+               <br />
+            </center>
+            <Button onClick={handleSignIn} variant="primary w-100 mb-2">
+               <center>
+                  <span>Login with Google</span>
+               </center>
+            </Button>
+            <center>
+               <small> We'll never share your data with anyone.</small>
+            </center>
+         </Stack>
+      </div>
    );
 };
 
