@@ -43,9 +43,15 @@ const OtherResults = ({ open, grandPrix }) => {
                         {firstDNF?.driver?.first_name.charAt(0)}. {firstDNF?.driver?.last_name}
                      </td>
                      <td className="p-2">
-                        {firstDNFResult?.driver?.first_name.charAt(0)}. {firstDNFResult?.driver?.last_name}
+                        {firstDNFResult ? (
+                           <span>
+                              {firstDNFResult?.driver?.first_name.charAt(0)}. {firstDNFResult?.driver?.last_name}
+                           </span>
+                        ) : (
+                           <span>-</span>
+                        )}
                      </td>
-                     <td className="p-2 text-center">{firstDNF?.points}</td>
+                     <td className="p-2 text-center">{firstDNF?.points || '-'}</td>
                   </tr>
                   <tr>
                      <th colSpan="3" className="w-100 px-2">
@@ -57,9 +63,15 @@ const OtherResults = ({ open, grandPrix }) => {
                         {fastestLap?.driver?.first_name.charAt(0)}. {fastestLap?.driver?.last_name}
                      </td>
                      <td className="p-2">
-                        {fastestLapResult?.driver?.first_name.charAt(0)}. {fastestLapResult?.driver?.last_name}
+                        {fastestLapResult ? (
+                           <span>
+                              {fastestLapResult?.driver?.first_name.charAt(0)}. {fastestLapResult?.driver?.last_name}
+                           </span>
+                        ) : (
+                           <span>-</span>
+                        )}
                      </td>
-                     <td className="p-2 text-center">{fastestLap?.points}</td>
+                     <td className="p-2 text-center">{fastestLap?.points || '-'}</td>
                   </tr>
                   <tr>
                      <td className="p-2">

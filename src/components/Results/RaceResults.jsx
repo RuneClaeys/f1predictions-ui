@@ -38,9 +38,15 @@ const RaceResults = ({ grandPrix, open }) => {
                            </span>
                         </td>
                         <td className="p-2">
-                           {raceResults[i]?.driver?.first_name.charAt(0)}. {raceResults[i]?.driver?.last_name}
+                           {raceResults?.length > 0 ? (
+                              <span>
+                                 {raceResults[i]?.driver?.first_name.charAt(0)}. {raceResults[i]?.driver?.last_name}
+                              </span>
+                           ) : (
+                              <span>-</span>
+                           )}
                         </td>
-                        <td className="p-2 text-center">{prediction?.points}</td>
+                        <td className="p-2 text-center">{prediction?.points || '-'}</td>
                      </tr>
                   ))}
                   <tr>

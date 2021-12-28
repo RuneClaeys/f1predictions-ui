@@ -14,8 +14,10 @@ const TotalPoints = ({ results, loading, bg = 'primary' }) => {
                      <Placeholder as="span" animation="glow">
                         <Placeholder className="rounded-1" xs={8} />
                      </Placeholder>
-                  ) : (
+                  ) : results.qualifying_points != undefined ? (
                      <span>{results.qualifying_points}</span>
+                  ) : (
+                     <span>-</span>
                   )}
                </Col>
                <Col className="text-center d-flex flex-column">
@@ -24,8 +26,10 @@ const TotalPoints = ({ results, loading, bg = 'primary' }) => {
                      <Placeholder as="span" animation="glow">
                         <Placeholder className="rounded-1" xs={8} />
                      </Placeholder>
-                  ) : (
+                  ) : results.race_points != null ? (
                      <span>{results.race_points}</span>
+                  ) : (
+                     <span>-</span>
                   )}
                </Col>
                <Col className="text-center d-flex flex-column">
@@ -34,8 +38,10 @@ const TotalPoints = ({ results, loading, bg = 'primary' }) => {
                      <Placeholder as="span" animation="glow">
                         <Placeholder className="rounded-1" xs={8} />
                      </Placeholder>
-                  ) : (
+                  ) : results.other_points != undefined ? (
                      <span>{results.other_points}</span>
+                  ) : (
+                     <span>-</span>
                   )}
                </Col>
                <Col className="text-center d-flex flex-column">
@@ -44,8 +50,10 @@ const TotalPoints = ({ results, loading, bg = 'primary' }) => {
                      <Placeholder as="span" animation="glow">
                         <Placeholder className="rounded-1" xs={8} />
                      </Placeholder>
-                  ) : (
+                  ) : results.total_points != null ? (
                      <span>{results.total_points}</span>
+                  ) : (
+                     <span>-</span>
                   )}
                </Col>
             </Row>

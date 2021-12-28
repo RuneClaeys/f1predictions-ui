@@ -38,9 +38,15 @@ const QualifyingResults = ({ grandPrix, open }) => {
                            </span>
                         </td>
                         <td className="p-2 ">
-                           {qualifyingResults[i]?.driver?.first_name.charAt(0)}. {qualifyingResults[i]?.driver?.last_name}
+                           {qualifyingResults?.length > 0 ? (
+                              <span>
+                                 {qualifyingResults[i]?.driver?.first_name.charAt(0)}. {qualifyingResults[i]?.driver?.last_name}
+                              </span>
+                           ) : (
+                              <span>-</span>
+                           )}
                         </td>
-                        <td className="p-2 text-center">{prediction?.points}</td>
+                        <td className="p-2 text-center">{prediction?.points || '-'}</td>
                      </tr>
                   ))}
                   <tr>
