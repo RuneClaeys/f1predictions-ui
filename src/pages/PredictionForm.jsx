@@ -125,7 +125,7 @@ const PredictionForm = () => {
                               onClick={() => handleNext(validateForm)}
                               variant="primary"
                               type="button"
-                              className="col"
+                              className="col text-nowrap"
                               disabled={loading}
                            >
                               <span className="me-3">Next</span>
