@@ -11,10 +11,10 @@ import { useNavbar } from '../core/hooks/useNavbar';
 import { useEffect } from 'react';
 import { useGet } from '../core/hooks/useGet';
 import { useStore } from '../core/hooks/useStore';
-
-const QualifyingForm = React.lazy(() => import('../components/GeneralForm/QualifyingForm'));
-const RaceForm = React.lazy(() => import('../components/GeneralForm/RaceForm'));
-const ExtraForm = React.lazy(() => import('../components/GeneralForm/ExtraForm'));
+import { usePut } from '../core/hooks/usePut';
+import QualifyingForm from '../components/GeneralForm/QualifyingForm';
+import RaceForm from '../components/GeneralForm/RaceForm';
+import ExtraForm from '../components/GeneralForm/ExtraForm';
 
 const PredictionForm = () => {
    const [enableValidation, setEnableValidation] = React.useState(false);
@@ -52,12 +52,19 @@ const PredictionForm = () => {
 
    useNavbar(options);
 
-   const { fetch, loading: loadingCreate } = usePost();
+   const { fetch: post, loading: loadingCreate } = usePost();
+   const { fetch: put, loading: loadingPut } = usePut();
 
    async function handleSubmitPrediction(prediction) {
-      await fetch(API_GRAND_PRIX + `/${id}` + API_PREDICTIONS, {
-         prediction_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value })),
-      }).then(() => push('/'));
+      if (grandPrix?.user_prediction) {
+         return await put(API_PREDICTIONS + `/${grandPrix.user_prediction.id}`, {
+            result_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value })),
+         }).then(() => push('/'));
+      } else {
+         return await post(API_GRAND_PRIX + `/${id}` + API_PREDICTIONS, {
+            prediction_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value })),
+         }).then(() => push('/'));
+      }
    }
 
    async function handleNext(validateForm) {
@@ -74,7 +81,12 @@ const PredictionForm = () => {
       setStepIndex(stepIndex - 1);
    }
 
-   const loading = useMemo(() => loadingGP || loadingCreate, [loadingGP, loadingCreate]);
+   const loading = useMemo(() => loadingGP || loadingCreate || loadingPut, [loadingGP, loadingCreate, loadingPut]);
+
+   const initialValues = useMemo(() => {
+      if (!grandPrix?.user_prediction) return {};
+      return grandPrix.user_prediction.prediction_entries.reduce((acc, cur) => ({ ...acc, [cur.name]: cur.driver.id }), {});
+   }, [grandPrix]);
 
    return (
       <div className="form-container">
@@ -82,8 +94,9 @@ const PredictionForm = () => {
             validationSchema={validationSchema[stepIndex]}
             validateOnChange={enableValidation}
             validateOnBlur={enableValidation}
-            initialValues={{}}
+            initialValues={initialValues}
             onSubmit={handleSubmitPrediction}
+            enableReinitialize
          >
             {({ handleSubmit, handleChange, values, errors, validateForm, dirty, submitCount }) => (
                <>

@@ -8,8 +8,6 @@ import { format } from 'date-fns';
 const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
    const { push } = useHistory();
 
-   console.log(new Date(showcaseGP?.qualifying_start_timestamp), new Date());
-
    return (
       <Card>
          {loading ? (
@@ -44,7 +42,7 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
                      </Button>
                   ) : !!showcaseGP?.user_prediction && new Date(showcaseGP.qualifying_start_timestamp) > new Date() ? (
                      <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
-                        Edit result
+                        Edit prediction
                      </Button>
                   ) : (
                      <Button onClick={() => push('/result/' + showcaseGP.id)} variant="primary" type="button">

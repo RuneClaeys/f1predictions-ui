@@ -26,7 +26,7 @@ import ReloadPrompt from './components/ReloadPrompt';
 import Callback from './pages/Callback';
 const intervalMS = 60 * 60 * 1000;
 
-const Fallback = () => {
+export const Fallback = () => {
    return (
       <div className="d-flex align-items-center justify-content-center" style={{ width: '100vw', height: '100vh' }}>
          <Spinner size="lg" animation="border" role="status" variant="primary">
