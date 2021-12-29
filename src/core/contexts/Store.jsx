@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const initialNavBar = {
    title: 'F1 Predictions',
@@ -16,6 +17,7 @@ const initialState = {
    current_season: null,
    notifications: [],
    navbar: initialNavBar,
+   accessToken: null,
 };
 
 const StoreContext = React.createContext();
@@ -38,6 +40,8 @@ function storeReducer(state, action) {
          return { ...state, notifications: [...state.notifications, action.payload] };
       case 'REMOVE_NOTIFICATION':
          return { ...state, notifications: state.notifications.filter((n) => n.id != action.payload) };
+      case 'SET_ACCESS_TOKEN':
+         return { ...state, accessToken: action.payload };
       default:
          return state;
    }
@@ -45,6 +49,12 @@ function storeReducer(state, action) {
 
 const StoreProvider = ({ children }) => {
    const [state, dispatch] = React.useReducer(storeReducer, initialState);
+
+   useEffect(() => {
+      const accessToken = localStorage.getItem('access_token');
+      console.log(accessToken);
+      if (accessToken) dispatch({ type: 'SET_ACCESS_TOKEN', payload: accessToken });
+   }, []);
 
    return <StoreContext.Provider value={{ state, dispatch }}>{children}</StoreContext.Provider>;
 };

@@ -2,11 +2,11 @@ import Stack from 'react-bootstrap/Stack';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useCallback, useState } from 'react';
-
-import { cacheNames } from 'workbox-core';
+import { useHistory } from 'react-router-dom';
 
 const Settings = () => {
    const [locale, setLocale] = useState('en');
+   const { push } = useHistory();
 
    const logout = useCallback(() => {
       caches
@@ -18,7 +18,10 @@ const Settings = () => {
                }
             }
          })
-         .finally(() => window.location.replace(`${import.meta.env.VITE_API_BASE_URL}/logout`));
+         .finally(() => {
+            localStorage.removeItem('access_token');
+            push('/signin');
+         });
    }, []);
 
    const changeLocale = useCallback(() => {}, []);

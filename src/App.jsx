@@ -23,6 +23,7 @@ const ResultsForm = React.lazy(() => import('./pages/ResultsForm'));
 
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import ReloadPrompt from './components/ReloadPrompt';
+import Callback from './pages/Callback';
 const intervalMS = 60 * 60 * 1000;
 
 const Fallback = () => {
@@ -39,15 +40,17 @@ const App = () => {
    const { state, dispatch } = useStore();
    const { fetch } = useGet(null, { initialFetch: false });
 
-   const { current_season } = state;
+   const { current_season, accessToken } = state;
 
    useEffect(async () => {
-      await fetch(API_DRIVERS).then((drivers) => dispatch({ type: 'SET_DRIVERS', payload: drivers }));
-      await fetch(API_SEASONS).then((seasons) => {
-         dispatch({ type: 'SET_SEASONS', payload: seasons });
-         dispatch({ type: 'SET_CURRENT_SEASON', payload: seasons.find((season) => season.year == new Date().getFullYear()) });
-      });
-   }, [fetch]);
+      if (accessToken) {
+         await fetch(API_DRIVERS).then((drivers) => dispatch({ type: 'SET_DRIVERS', payload: drivers }));
+         await fetch(API_SEASONS).then((seasons) => {
+            dispatch({ type: 'SET_SEASONS', payload: seasons });
+            dispatch({ type: 'SET_CURRENT_SEASON', payload: seasons.find((season) => season.year == new Date().getFullYear()) });
+         });
+      }
+   }, [accessToken]);
 
    useEffect(async () => {
       if (current_season) {
@@ -86,6 +89,7 @@ const App = () => {
                      <Route exact path="/admin" component={Admin} />
                      <Route exact path="/admin/result/:id" component={ResultsForm} />
                      <Route exact path="/settings" component={Settings} />
+                     <Route exact path="/callback" component={Callback} />
                      <Route exact path="*" render={() => <Redirect to="/" />} />
                   </Switch>
                </Container>

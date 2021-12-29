@@ -2,12 +2,17 @@ import axios from 'axios';
 
 axios.interceptors.request.use(
    function (config) {
-      config.withCredentials = true;
       config.headers = {
          ...config.headers,
          Accept: 'application/json',
          'Content-Type': 'application/json',
       };
+
+      const accessToken = localStorage.getItem('access_token');
+      if (accessToken) {
+         config.headers = { ...config.headers, Authorization: `Bearer ${accessToken}` };
+      }
+
       return config;
    },
    function (error) {
