@@ -1,7 +1,7 @@
 import { precacheAndRoute } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
-import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+// import { registerRoute } from 'workbox-routing';
+// import { StaleWhileRevalidate } from 'workbox-strategies';
+// import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
 self.addEventListener('message', (event) => {
    if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();

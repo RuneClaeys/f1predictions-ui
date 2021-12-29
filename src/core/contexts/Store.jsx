@@ -52,7 +52,6 @@ const StoreProvider = ({ children }) => {
 
    useEffect(() => {
       const accessToken = localStorage.getItem('access_token');
-      console.log(accessToken);
       if (accessToken) dispatch({ type: 'SET_ACCESS_TOKEN', payload: accessToken });
    }, []);
 

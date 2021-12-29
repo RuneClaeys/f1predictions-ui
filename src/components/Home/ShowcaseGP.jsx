@@ -8,6 +8,8 @@ import { format } from 'date-fns';
 const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
    const { push } = useHistory();
 
+   console.log(new Date(showcaseGP?.qualifying_start_timestamp), new Date());
+
    return (
       <Card>
          {loading ? (
@@ -26,6 +28,7 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
             showcaseGP && (
                <Card.Body>
                   <Card.Title>{showcaseGP.name}</Card.Title>
+
                   {isUpcomming ? (
                      <Card.Text>
                         Next up is the {showcaseGP.name}, who's going to win? Submit your predictions before{' '}
@@ -38,6 +41,10 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
                   {isUpcomming && !showcaseGP?.user_prediction ? (
                      <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
                         Enter predictions
+                     </Button>
+                  ) : !!showcaseGP?.user_prediction && new Date(showcaseGP.qualifying_start_timestamp) > new Date() ? (
+                     <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
+                        Edit result
                      </Button>
                   ) : (
                      <Button onClick={() => push('/result/' + showcaseGP.id)} variant="primary" type="button">
