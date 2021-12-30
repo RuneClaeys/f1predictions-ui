@@ -2,7 +2,7 @@ import { useStore } from '../core/hooks/useStore';
 import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
 const Navbar = () => {
-   const { navbar } = useStore().state;
+   const { navbar, user } = useStore().state;
 
    return (
       <div className="navbar p-0 d-flex align-items-center  bg-primary text-white ">
@@ -38,11 +38,13 @@ const Navbar = () => {
                      Settings
                   </Nav.Link>
                </Nav.Item>
-               <Nav.Item as="li">
-                  <Nav.Link to="/admin" className="text-white" activeClassName="fw-bold" as={NavLink}>
-                     Admin
-                  </Nav.Link>
-               </Nav.Item>
+               {user?.is_admin && (
+                  <Nav.Item as="li">
+                     <Nav.Link to="/admin" className="text-white" activeClassName="fw-bold" as={NavLink}>
+                        Admin
+                     </Nav.Link>
+                  </Nav.Item>
+               )}
             </Nav>
          </div>
       </div>

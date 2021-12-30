@@ -18,6 +18,7 @@ const initialState = {
    notifications: [],
    navbar: initialNavBar,
    accessToken: null,
+   user: null,
 };
 
 const StoreContext = React.createContext();
@@ -42,6 +43,8 @@ function storeReducer(state, action) {
          return { ...state, notifications: state.notifications.filter((n) => n.id != action.payload) };
       case 'SET_ACCESS_TOKEN':
          return { ...state, accessToken: action.payload };
+      case 'SET_USER':
+         return { ...state, user: action.payload };
       default:
          return state;
    }
