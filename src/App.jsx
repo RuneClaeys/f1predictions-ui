@@ -7,6 +7,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import BottomNavBar from './components/BottomNavBar';
 import Toaster from './components/Toaster';
+import Callback from './pages/Callback';
+
 import { useStore } from './core/hooks/useStore';
 import { useGet } from './core/hooks/useGet';
 import { useEffect } from 'react';
@@ -20,11 +22,6 @@ const Leaderboard = React.lazy(() => import('./pages/Leaderboard'));
 const Admin = React.lazy(() => import('./pages/Admin'));
 const Settings = React.lazy(() => import('./pages/Settings'));
 const ResultsForm = React.lazy(() => import('./pages/ResultsForm'));
-
-import { useRegisterSW } from 'virtual:pwa-register/react';
-import ReloadPrompt from './components/ReloadPrompt';
-import Callback from './pages/Callback';
-const intervalMS = 60 * 60 * 1000;
 
 export const Fallback = () => {
    return (
@@ -63,15 +60,6 @@ const App = () => {
       }
    }, [current_season]);
 
-   const updateServiceWorker = useRegisterSW({
-      onRegistered(r) {
-         r &&
-            setInterval(() => {
-               r.update();
-            }, intervalMS);
-      },
-   });
-
    return (
       <Suspense fallback={<Fallback />}>
          <div className="app">
@@ -102,7 +90,6 @@ const App = () => {
             <div className="app__toaster">
                <Toaster />
             </div>
-            <ReloadPrompt />
          </div>
       </Suspense>
    );
