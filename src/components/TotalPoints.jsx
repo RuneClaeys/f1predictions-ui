@@ -2,14 +2,16 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Placeholder from 'react-bootstrap/Placeholder';
 import Row from 'react-bootstrap/Row';
+import { useTranslation } from 'react-i18next';
 
 const TotalPoints = ({ results, loading, bg = 'primary' }) => {
+   const { t } = useTranslation();
    return (
       <Card bg={bg} text="white">
          <Card.Body>
             <Row>
                <Col className="text-center d-flex flex-column">
-                  <strong>Quali</strong>
+                  <strong>{t('home.quali')}</strong>
                   {loading ? (
                      <Placeholder as="span" animation="glow">
                         <Placeholder className="rounded-1" xs={8} />
@@ -21,7 +23,7 @@ const TotalPoints = ({ results, loading, bg = 'primary' }) => {
                   )}
                </Col>
                <Col className="text-center d-flex flex-column">
-                  <strong>Race</strong>
+                  <strong>{t('global.race')}</strong>
                   {loading ? (
                      <Placeholder as="span" animation="glow">
                         <Placeholder className="rounded-1" xs={8} />
@@ -33,7 +35,7 @@ const TotalPoints = ({ results, loading, bg = 'primary' }) => {
                   )}
                </Col>
                <Col className="text-center d-flex flex-column">
-                  <strong>Other</strong>
+                  <strong>{t('global.other')}</strong>
                   {loading ? (
                      <Placeholder as="span" animation="glow">
                         <Placeholder className="rounded-1" xs={8} />
@@ -45,7 +47,7 @@ const TotalPoints = ({ results, loading, bg = 'primary' }) => {
                   )}
                </Col>
                <Col className="text-center d-flex flex-column">
-                  <strong>Total</strong>
+                  <strong>{t('global.total')}</strong>
                   {loading ? (
                      <Placeholder as="span" animation="glow">
                         <Placeholder className="rounded-1" xs={8} />

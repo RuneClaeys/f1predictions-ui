@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Placeholder from 'react-bootstrap/Placeholder';
 import Row from 'react-bootstrap/Row';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 const LoadingList = () => {
@@ -55,6 +56,7 @@ const List = ({ grandPrix, upcomming = false }) => {
 };
 
 const GrandPrixHistory = ({ overview, loading }) => {
+   const { t } = useTranslation();
    const historyGPs = useMemo(() => {
       return overview.grand_prix
          .filter((gp) => gp.qualifying_start_timestamp < new Date())
@@ -71,16 +73,16 @@ const GrandPrixHistory = ({ overview, loading }) => {
       <div>
          {loading ? (
             <>
-               <h5 className="mb-3">History</h5>
+               <h5 className="mb-3">{t('home.history')}</h5>
                <LoadingList />
-               <h5 className="my-3">Upcomming</h5>
+               <h5 className="my-3">{t('home.upcomming')}</h5>
                <LoadingList />
             </>
          ) : (
             <>
-               {historyGPs.length > 0 && <h5 className="mb-3">History</h5>}
+               {historyGPs.length > 0 && <h5 className="mb-3">{t('home.history')}</h5>}
                <List grandPrix={historyGPs || []} />
-               {upcommingGPs.length > 0 && <h5 className="my-3">Upcomming</h5>}
+               {upcommingGPs.length > 0 && <h5 className="my-3">{t('home.upcomming')}</h5>}
                <List grandPrix={upcommingGPs || []} upcomming />
             </>
          )}

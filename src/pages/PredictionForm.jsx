@@ -15,8 +15,10 @@ import { usePut } from '../core/hooks/usePut';
 import QualifyingForm from '../components/GeneralForm/QualifyingForm';
 import RaceForm from '../components/GeneralForm/RaceForm';
 import ExtraForm from '../components/GeneralForm/ExtraForm';
+import { useTranslation } from 'react-i18next';
 
 const PredictionForm = () => {
+   const { t } = useTranslation();
    const [enableValidation, setEnableValidation] = React.useState(false);
    const [stepIndex, setStepIndex] = React.useState(0);
 
@@ -115,9 +117,15 @@ const PredictionForm = () => {
 
                      <div className="d-flex py-3 w-10 position-sticky bg-white gap-4" style={{ bottom: 0 }}>
                         {stepIndex !== 0 && (
-                           <Button onClick={handlePrev} variant="outline-primary" type="button" className="col-3" disabled={loading}>
+                           <Button
+                              onClick={handlePrev}
+                              variant="outline-primary"
+                              type="button"
+                              className="col-xs text-nowrap"
+                              disabled={loading}
+                           >
                               <i className="fas fa-arrow-left"></i>
-                              <span className="ms-3">Back</span>
+                              <span className="ms-3">{t('global.back')}</span>
                            </Button>
                         )}
                         {stepIndex < 2 && (
@@ -128,13 +136,13 @@ const PredictionForm = () => {
                               className="col text-nowrap"
                               disabled={loading}
                            >
-                              <span className="me-3">Next</span>
+                              <span className="me-3">{t('global.next')}</span>
                               <i className="fas fa-arrow-right"></i>
                            </Button>
                         )}
                         {stepIndex === 2 && (
                            <Button variant="primary" type="submit" className="col" disabled={loading}>
-                              <span className="me-3">Save</span>
+                              <span className="me-3">{t('global.save')}</span>
                               <i className="fas fa-save"></i>
                            </Button>
                         )}

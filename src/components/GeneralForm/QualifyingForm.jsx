@@ -1,19 +1,22 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
+import { useTranslation } from 'react-i18next';
 import { useStore } from '../../core/hooks/useStore';
 
 const QualifyingForm = ({ handleChange, errors, values, disabled }) => {
    const { drivers } = useStore().state;
-
+   const { t } = useTranslation();
    return (
       <div className="d-flex flex-column">
-         <h2>Qualifying</h2>
+         <h2>{t('global.qualifying')}</h2>
 
          {[...Array(5)].map((_, i) => {
             const count = i + 1;
             return (
                <Form.Group key={`QUALIFYING_${count}`} className="mb-3">
-                  <Form.Label>Position {count}</Form.Label>
+                  <Form.Label>
+                     {t('global.position')} {count}
+                  </Form.Label>
                   <Form.Control
                      as="select"
                      name={`QUALIFYING_${count}`}
@@ -22,7 +25,7 @@ const QualifyingForm = ({ handleChange, errors, values, disabled }) => {
                      onChange={handleChange}
                      isInvalid={!!errors[`QUALIFYING_${count}`]}
                   >
-                     <option>Choose a driver</option>
+                     <option>{t('global.choose-driver')}</option>
                      {drivers.map((driver) => {
                         return (
                            <option key={driver.id} value={driver.id}>

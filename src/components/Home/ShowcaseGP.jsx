@@ -4,9 +4,11 @@ import Placeholder from 'react-bootstrap/Placeholder';
 
 import { useHistory } from 'react-router';
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
 const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
    const { push } = useHistory();
+   const { t } = useTranslation();
 
    return (
       <Card>
@@ -29,24 +31,26 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
 
                   {isUpcomming ? (
                      <Card.Text>
-                        Next up is the {showcaseGP.name}, who's going to win? Submit your predictions before{' '}
+                        {t('home.upcomming-gp', { name: showcaseGP.name })}
                         <strong>{format(new Date(showcaseGP.qualifying_start_timestamp), 'dd/MM HH:mm')}</strong>!
                      </Card.Text>
+                  ) : showcaseGP?.user_prediction ? (
+                     <Card.Text>{t('home.passed-gp-and-result', { name: showcaseGP.name })}</Card.Text>
                   ) : (
-                     <Card.Text>The {showcaseGP.name} has passed. Did you predict the outcome? Check your results now!</Card.Text>
+                     <Card.Text>{t('home.passed-gp', { name: showcaseGP.name })}</Card.Text>
                   )}
 
                   {isUpcomming && !showcaseGP?.user_prediction ? (
                      <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
-                        Enter predictions
+                        {t('home.enter-prediction')}
                      </Button>
                   ) : !!showcaseGP?.user_prediction && new Date(showcaseGP.qualifying_start_timestamp) > new Date() ? (
                      <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
-                        Edit prediction
+                        {t('home.edit-prediction')}
                      </Button>
                   ) : (
                      <Button onClick={() => push('/result/' + showcaseGP.id)} variant="primary" type="button">
-                        View results
+                        {t('home.show-results')}
                      </Button>
                   )}
                </Card.Body>

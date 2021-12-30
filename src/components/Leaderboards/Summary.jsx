@@ -4,10 +4,12 @@ import { API_RESULTS, API_SEASONS } from '../../core/endpoints/endpoints';
 import { useGet } from '../../core/hooks/useGet';
 import { useStore } from '../../core/hooks/useStore';
 import Placeholder from 'react-bootstrap/Placeholder';
+import { useTranslation } from 'react-i18next';
 
 const Summary = () => {
    const { current_season } = useStore().state;
    const { fetch, loading, error, data: results } = useGet(null, { initialFetch: false });
+   const { t } = useTranslation();
 
    useEffect(() => {
       if (current_season) {
@@ -20,19 +22,19 @@ const Summary = () => {
          <thead>
             <tr>
                <th style={{ top: '0' }} className="position-sticky bg-light">
-                  Player
+                  {t('leaderboard.player')}
                </th>
                <th style={{ minWidth: '30px', top: '0' }} className="border-0 text-center position-sticky bg-light">
-                  Quali
+                  {t('home.quali')}
                </th>
                <th style={{ minWidth: '30px', top: '0' }} className="border-0 text-center position-sticky bg-light">
-                  Race
+                  {t('global.race')}
                </th>
                <th style={{ minWidth: '30px', top: '0' }} className="border-0 text-center position-sticky bg-light">
-                  Other
+                  {t('global.extra')}
                </th>
                <th style={{ minWidth: '30px', top: '0' }} className="border-0 text-center position-sticky bg-light">
-                  Total
+                  {t('global.total')}
                </th>
             </tr>
          </thead>

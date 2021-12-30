@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const QualifyingResults = ({ grandPrix, open }) => {
+   const { t } = useTranslation();
+
    const qualifyingPredictions = useMemo(
       () =>
          grandPrix?.user_prediction?.prediction_entries
@@ -19,23 +22,29 @@ const QualifyingResults = ({ grandPrix, open }) => {
    return (
       <div className="card">
          <details className="card-body" open={open}>
-            <summary>Qualifying results</summary>
+            <summary>{t('result.qualifying-result')}</summary>
             <table className="table mt-2">
                <thead>
                   <tr>
-                     <th className=" px-2">Prediction</th>
-                     <th className="text-nowrap px-2 ">Result</th>
-                     <th className="text-nowrap px-2 text-center">Points</th>
+                     <th className="w-100 px-2">{t('result.prediction')}</th>
+                     <th className="text-nowrap px-2">{t('result.result')}</th>
+                     <th className="text-nowrap px-2 text-center">{t('global.points')}</th>
                   </tr>
                </thead>
                <tbody>
-                  {qualifyingPredictions?.map((prediction, i) => (
+                  {[...Array(5)].map((_, i) => (
                      <tr key={i}>
                         <td className="p-2 ">
-                           <strong>{i + 1}. </strong>
-                           <span>
-                              {prediction?.driver?.first_name.charAt(0)} {prediction?.driver?.last_name}
-                           </span>
+                           {qualifyingPredictions?.length > 0 ? (
+                              <>
+                                 <strong>{i + 1}. </strong>
+                                 <span>
+                                    {qualifyingPredictions[i]?.driver?.first_name.charAt(0)} {qualifyingPredictions[i]?.driver?.last_name}
+                                 </span>
+                              </>
+                           ) : (
+                              <span>-</span>
+                           )}
                         </td>
                         <td className="p-2 ">
                            {qualifyingResults?.length > 0 ? (
@@ -46,14 +55,14 @@ const QualifyingResults = ({ grandPrix, open }) => {
                               <span>-</span>
                            )}
                         </td>
-                        <td className="p-2 text-center">{prediction?.points || '-'}</td>
+                        <td className="p-2 text-center">{qualifyingPredictions?.[i]?.points || '-'}</td>
                      </tr>
                   ))}
                   <tr>
                      <td className="p-2">
-                        <strong>Total</strong>
+                        <strong>{t('global.total')}</strong>
                      </td>
-                     <td className="p-2 text-center"></td>
+                     <td colSpan={1} className="p-2 text-center"></td>
                      <td className="p-2 text-center">
                         <strong>{grandPrix?.user_prediction?.qualifying_points}</strong>
                      </td>

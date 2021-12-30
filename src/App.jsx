@@ -13,6 +13,7 @@ import { useStore } from './core/hooks/useStore';
 import { useGet } from './core/hooks/useGet';
 import { useEffect } from 'react';
 import { API_DRIVERS, API_GRAND_PRIX, API_SEASONS } from './core/endpoints/endpoints';
+import { useTranslation } from 'react-i18next';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const SignIn = React.lazy(() => import('./pages/SignIn'));

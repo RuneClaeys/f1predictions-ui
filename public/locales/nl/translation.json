@@ -1,0 +1,45 @@
+{
+  "home": {
+    "season-total": "Seizoens totaal",
+    "upcomming-gp": "De volgende gp is de {{name}}, wie gaat er winnen? Dien uw voorspelling in voor ",
+    "passed-gp": "De {{name}} is voorbij! Binnenkort kun je jouw resultaten bekijken!",
+    "passed-gp-and-result": "De {{name}} is voorbij! Bekijk nu jouw resultaten!",
+    "enter-prediction": "Voorspelling toevoegen",
+    "edit-prediction": "Voorspelling aanpassen",
+    "show-results": "Resultaten tonen",
+    "history": "Voorbij",
+    "upcomming": "Volgende",
+    "quali": "Quali"
+  },
+  "global": {
+    "next": "Volgende",
+    "save": "Opslaan",
+    "back": "Vorige",
+    "qualifying": "Kwalificaties",
+    "position": "Positie",
+    "choose-driver": "Kies een piloot",
+    "race": "Race",
+    "extra": "Extra's",
+    "fastest-lap": "Snelste ronde",
+    "first-dnf": "Eerste dnf",
+    "other": "Andere",
+    "total": "Totaal",
+    "points": "Punten"
+  },
+  "result": {
+    "qualifying-result": "Resultaat kwalificaties",
+    "prediction": "Voorspelling",
+    "result": "Resultaat",
+    "race-result": "Resultaat van de race",
+    "other-result": "Extras"
+  },
+  "leaderboard": {
+    "player": "Deelnemer"
+  },
+  "settings": {
+    "application": "Applicatie instellingen",
+    "account": "Account",
+    "log-out": "Afmelden",
+    "language": "Taal"
+  }
+}

@@ -7,6 +7,8 @@ import './core/interceptors/http.interceptor';
 import { BrowserRouter } from 'react-router-dom';
 import { StoreProvider } from './core/contexts/Store';
 
+import './core/i18n/i18n';
+
 ReactDom.render(
    <React.StrictMode>
       <BrowserRouter>

@@ -3,10 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Settings = () => {
-   const [locale, setLocale] = useState('en');
    const { push } = useHistory();
+   const { t, i18n } = useTranslation();
 
    const logout = useCallback(() => {
       caches
@@ -24,16 +25,23 @@ const Settings = () => {
          });
    }, []);
 
-   const changeLocale = useCallback(() => {}, []);
+   const changeLocale = useCallback(
+      (locale) => {
+         console.log(locale);
+         i18n.changeLanguage(locale);
+      },
+      [i18n]
+   );
 
    return (
       <div className="form-container">
          <Stack gap={3}>
             <div>
-               <h4>Application</h4>
+               <h4>{t('settings.application')}</h4>
                <div className="row">
-                  <Form.Group className="col-7">
-                     <Form.Control as="select" name={`locale`} value={locale} onChange={(e) => setLocale(e.target.value)}>
+                  <Form.Group className="col-12" style={{ maxWidth: '400px' }}>
+                     <Form.Label>{t('settings.language')}</Form.Label>
+                     <Form.Control as="select" name={`locale`} value={i18n.language} onChange={(e) => changeLocale(e.target.value)}>
                         {[
                            { id: 'nl', language: 'Nederlands' },
                            { id: 'en', language: 'English' },
@@ -46,15 +54,12 @@ const Settings = () => {
                         })}
                      </Form.Control>
                   </Form.Group>
-                  <Button className="col-4" onClick={() => changeLocale()}>
-                     Change
-                  </Button>
                </div>
             </div>
             <div>
-               <h4>Account</h4>
-               <Button style={{ width: '200px' }} onClick={logout}>
-                  Log out
+               <h4>{t('settings.account')}</h4>
+               <Button className="col-6" onClick={logout}>
+                  {t('settings.log-out')}
                </Button>
             </div>
          </Stack>

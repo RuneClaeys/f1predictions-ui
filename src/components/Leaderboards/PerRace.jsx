@@ -5,10 +5,12 @@ import { useGet } from '../../core/hooks/useGet';
 import { useStore } from '../../core/hooks/useStore';
 import { API_SEASONS } from '../../core/endpoints/endpoints';
 import Placeholder from 'react-bootstrap/Placeholder';
+import { useTranslation } from 'react-i18next';
 
 const PerRace = () => {
    const { current_season, grandPrix } = useStore().state;
    const { fetch, data: details, loading } = useGet(null, { initialFetch: false });
+   const { t } = useTranslation();
 
    useEffect(() => {
       if (current_season) {
@@ -31,7 +33,7 @@ const PerRace = () => {
          <thead>
             <tr className="border-0">
                <th className="position-sticky bg-light " style={{ left: '0', top: '0', zIndex: '1020', borderLeft: '0px' }}>
-                  Player
+                  {t('leaderboard.player')}
                </th>
                {(grandPrix || []).map((gp) => {
                   return (
@@ -41,7 +43,7 @@ const PerRace = () => {
                   );
                })}
                <th className="position-sticky bg-light" style={{ right: '0', top: '0', zIndex: '1020', borderRight: '0px' }}>
-                  Total
+                  {t('global.total')}
                </th>
             </tr>
          </thead>
