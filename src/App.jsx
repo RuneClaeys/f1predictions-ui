@@ -38,7 +38,7 @@ const App = () => {
    const { state, dispatch } = useStore();
    const { fetch } = useGet(null, { initialFetch: false });
 
-   const { current_season, accessToken } = state;
+   const { current_season, accessToken, user } = state;
 
    useEffect(async () => {
       if (accessToken) {
@@ -76,8 +76,8 @@ const App = () => {
                      <Route exact path="/prediction/:id" component={PredictionForm} />
                      <Route exact path="/result/:id" component={Result} />
                      <Route exact path="/leaderboard" component={Leaderboard} />
-                     <Route exact path="/admin" component={Admin} />
-                     <Route exact path="/admin/result/:id" component={ResultsForm} />
+                     {user?.is_admin && <Route exact path="/admin" component={Admin} />}
+                     {user?.is_admin && <Route exact path="/admin/result/:id" component={ResultsForm} />}
                      <Route exact path="/settings" component={Settings} />
                      <Route exact path="/callback" component={Callback} />
                      <Route exact path="*" render={() => <Redirect to="/" />} />
