@@ -1,11 +1,11 @@
 {
    "global": {
-      "back": "Previous",
+      "back": "Back",
       "choose-driver": "Choose a pilot",
       "extra": "Extras",
       "fastest-lap": "Fastest Lap",
       "first-dnf": "First dnf",
-      "next": "Next one",
+      "next": "Next",
       "other": "Others",
       "position": "Position",
       "points": "Points",
@@ -20,7 +20,7 @@
       "history": "Past",
       "passed-gp": "The {{name}} is over! \nSoon you will be able to view your results!",
       "passed-gp-and-result": "The {{name}} is over! \nView your results now!",
-      "quali": "quality",
+      "quali": "Quali",
       "season-total": "Seasonal total",
       "show-results": "Show results",
       "upcomming": "Next one",
@@ -32,8 +32,8 @@
    "result": {
       "other-result": "Extras",
       "prediction": "Forecast",
-      "qualifying-result": "Result qualifications",
-      "race-result": "Result of the race",
+      "qualifying-result": "Qualifying result",
+      "race-result": "Race result",
       "result": "Result"
    },
    "settings": {
