@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React from 'react';
+import { useStore } from './useStore';
 
 export function usePut() {
    const [loading, setLoading] = React.useState(false);
    const [error, setError] = React.useState(null);
    const [data, setData] = React.useState(null);
+
+   const { dispatch } = useStore();
 
    const fetch = React.useCallback(async (url, body, fetchOptions) => {
       setLoading(true);
@@ -17,8 +20,6 @@ export function usePut() {
                return (message = null);
             case 403:
                return (message = 'U hebt geen toegang tot die gegevens');
-            case 400:
-               return (message = 'Die gegevens bestaan niet of konden niet worden opgevraagd');
             default:
                return (message = import.meta.env.MODE === 'prod' ? 'Er is iets fout gegaan' : error?.message);
          }

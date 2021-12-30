@@ -15,8 +15,8 @@
       "total": "Total"
    },
    "home": {
-      "edit-prediction": "Adjust forecast",
-      "enter-prediction": "Add forecast",
+      "edit-prediction": "Adjust prediction",
+      "enter-prediction": "Add prediction",
       "history": "Past",
       "passed-gp": "The {{name}} is over! \nSoon you will be able to view your results!",
       "passed-gp-and-result": "The {{name}} is over! \nView your results now!",
@@ -27,11 +27,11 @@
       "upcomming-gp": "The next GP is the {{name}}, who will win? \nSubmit your prediction before"
    },
    "leaderboard": {
-      "player": "Participant"
+      "player": "Player"
    },
    "result": {
       "other-result": "Extras",
-      "prediction": "Forecast",
+      "prediction": "Preditcion",
       "qualifying-result": "Qualifying result",
       "race-result": "Race result",
       "result": "Result"
