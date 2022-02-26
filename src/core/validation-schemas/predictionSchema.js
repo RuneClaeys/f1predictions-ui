@@ -27,99 +27,72 @@ export default [
     yup.object().shape({
         QUALIFYING_1: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'QUALIFYING'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'QUALIFYING')),
         QUALIFYING_2: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'QUALIFYING'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'QUALIFYING')),
         QUALIFYING_3: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'QUALIFYING'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'QUALIFYING')),
         QUALIFYING_4: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'QUALIFYING'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'QUALIFYING')),
         QUALIFYING_5: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'QUALIFYING'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'QUALIFYING')),
     }),
     yup.object().shape({
         RACE_1: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_2: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_3: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_4: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_5: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_6: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_7: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_8: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_9: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
         RACE_10: yup
             .string()
-            .required('Required')
-            .test(i18n.t('global.required'), i18n.t('global.dirver-already-selected'), (value, options) =>
-                isUnique(value, options, 'RACE'),
-            ),
+            .required(i18n.t('global.required'))
+            .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
     }),
     yup.object().shape({
-        FIRST_DNF: yup.string().required('Required').test('isInRace', i18n.t('global.dirver-set-to-finish-race'), isNotInRace),
-        FASTEST_LAP: yup.string().required('Required'),
+        FIRST_DNF: yup
+            .string()
+            .required(i18n.t('global.required'))
+            .test('isInRace', i18n.t('global.dirver-set-to-finish-race'), isNotInRace),
+        FASTEST_LAP: yup.string().required(i18n.t('global.required')),
     }),
 ];

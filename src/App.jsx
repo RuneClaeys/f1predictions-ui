@@ -44,7 +44,10 @@ const App = () => {
         if (accessToken) {
             await fetch(API_USER_INFO).then((user) => dispatch({ type: 'SET_USER', payload: user }));
             await fetch(API_DRIVERS).then((drivers) =>
-                dispatch({ type: 'SET_DRIVERS', payload: drivers.sort((a, b) => a.first_name.localeCompare(b.first_name)) }),
+                dispatch({
+                    type: 'SET_DRIVERS',
+                    payload: drivers.sort((a, b) => a.team.name.localeCompare(b.team.name)),
+                }),
             );
             await fetch(API_SEASONS).then((seasons) => {
                 dispatch({ type: 'SET_SEASONS', payload: seasons });
