@@ -1,6 +1,6 @@
 {
   "home": {
-    "season-total": "Seizoens totaal",
+    "season-total": "Jouw score",
     "upcomming-gp": "De volgende gp is de {{name}}, wie gaat er winnen? Dien uw voorspelling in voor ",
     "passed-gp": "De {{name}} is voorbij! Binnenkort kun je jouw resultaten bekijken!",
     "passed-gp-and-result": "De {{name}} is voorbij! Bekijk nu jouw resultaten!",
@@ -24,7 +24,13 @@
     "first-dnf": "Eerste dnf",
     "other": "Andere",
     "total": "Totaal",
-    "points": "Punten"
+    "points": "Punten",
+    "season-start-title": "Het seizoen 2022 begint binnenkort",
+    "season-start-description": "Als het seizoen bijna begint, kun je hier je voorspelling voor de eerstvolgende GP doorgeven!",
+    "home": "Overzicht",
+    "leaderboard": "Ranglijsten",
+    "settings": "Instellingen",
+    "admin": "Administrator"
   },
   "result": {
     "qualifying-result": "Resultaat kwalificaties",

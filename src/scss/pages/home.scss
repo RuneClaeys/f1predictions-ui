@@ -1,34 +1,34 @@
 .home {
-   display: grid;
-   grid-template-columns: 1fr;
-   grid-template-rows: repeat(3, auto);
-   grid-template-areas:
-      'showcase'
-      'total'
-      'history';
-   gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+        'showcase'
+        'total'
+        'history';
+    gap: 1rem;
 
-   &__showcase {
-      grid-area: showcase;
-   }
+    &__showcase {
+        grid-area: showcase;
+    }
 
-   &__total {
-      grid-area: total;
-   }
+    &__total {
+        grid-area: total;
+    }
 
-   &__history {
-      grid-area: history;
-   }
+    &__history {
+        grid-area: history;
+    }
 
-   @include media-breakpoint-up(lg) {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto 1fr;
-      grid-template-areas:
-         'history showcase'
-         'history total';
+    @include media-breakpoint-up(lg) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            'showcase history'
+            'total history';
 
-      &__showcase {
-         margin-top: 2.5rem;
-      }
-   }
+        &__showcase {
+            margin-top: 1.1rem;
+        }
+    }
 }
