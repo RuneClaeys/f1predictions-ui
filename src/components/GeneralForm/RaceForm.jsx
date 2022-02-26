@@ -30,7 +30,7 @@ const RaceForm = ({ handleChange, errors, values, disabled, grandPrix }) => {
                             {drivers.map((driver) => {
                                 return (
                                     <option key={driver.id} value={driver.id}>
-                                        {`${driver.first_name} ${driver.last_name}`}
+                                        [{driver.team.short_name}] - {`${driver.first_name} ${driver.last_name}`}
                                     </option>
                                 );
                             })}
