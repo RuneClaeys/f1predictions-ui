@@ -30,7 +30,9 @@
     "home": "Overzicht",
     "leaderboard": "Ranglijsten",
     "settings": "Instellingen",
-    "admin": "Administrator"
+    "admin": "Administrator",
+    "prediction-updated": "Voorspelling aangepast",
+    "prediction-submited": "Voorspelling ingediend"
   },
   "result": {
     "qualifying-result": "Resultaat kwalificaties",

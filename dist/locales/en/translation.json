@@ -18,7 +18,9 @@
         "admin": "Administrator",
         "home": "Overview",
         "leaderboard": "Rankings",
-        "settings": "Settings"
+        "settings": "Settings",
+        "prediction-submited": "Prediction submitted",
+        "prediction-updated": "Prediction adjusted"
     },
     "home": {
         "edit-prediction": "Adjust prediction",

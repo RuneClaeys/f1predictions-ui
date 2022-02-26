@@ -31,9 +31,9 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
                     {isUpcomming ? (
                         <Card.Text>
                             {t('home.upcomming-gp', { name: showcaseGP.name })}
-                            <strong>{format(new Date(showcaseGP.qualifying_start_timestamp), 'dd/MM HH:mm')}</strong>!
+                            <strong className="ms-1">{format(new Date(showcaseGP.qualifying_start_timestamp), 'dd/MM HH:mm')}</strong>!
                         </Card.Text>
-                    ) : showcaseGP?.user_prediction ? (
+                    ) : showcaseGP?.user_prediction && showcaseGP?.result_id ? (
                         <Card.Text>{t('home.passed-gp-and-result', { name: showcaseGP.name })}</Card.Text>
                     ) : (
                         <Card.Text>{t('home.passed-gp', { name: showcaseGP.name })}</Card.Text>
@@ -48,9 +48,11 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
                             {t('home.edit-prediction')}
                         </Button>
                     ) : (
-                        <Button onClick={() => push('/result/' + showcaseGP.id)} variant="primary" type="button">
-                            {t('home.show-results')}
-                        </Button>
+                        showcaseGP?.result_id && (
+                            <Button onClick={() => push('/result/' + showcaseGP.id)} variant="primary" type="button">
+                                {t('home.show-results')}
+                            </Button>
+                        )
                     )}
                 </Card.Body>
             ) : (
