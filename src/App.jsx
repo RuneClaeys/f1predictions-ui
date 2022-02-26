@@ -43,7 +43,9 @@ const App = () => {
     useEffect(async () => {
         if (accessToken) {
             await fetch(API_USER_INFO).then((user) => dispatch({ type: 'SET_USER', payload: user }));
-            await fetch(API_DRIVERS).then((drivers) => dispatch({ type: 'SET_DRIVERS', payload: drivers }));
+            await fetch(API_DRIVERS).then((drivers) =>
+                dispatch({ type: 'SET_DRIVERS', payload: drivers.sort((a, b) => a.first_name.localeCompare(b.first_name)) }),
+            );
             await fetch(API_SEASONS).then((seasons) => {
                 dispatch({ type: 'SET_SEASONS', payload: seasons });
                 dispatch({ type: 'SET_CURRENT_SEASON', payload: seasons.find((season) => season.year == new Date().getFullYear()) });

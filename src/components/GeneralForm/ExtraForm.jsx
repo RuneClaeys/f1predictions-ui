@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useStore } from '../../core/hooks/useStore';
 
-const ExtraForm = ({ handleChange, errors, values, disabled }) => {
+const ExtraForm = ({ handleChange, errors, values, disabled, grandPrix }) => {
     const { drivers } = useStore().state;
     const { t } = useTranslation();
     return (

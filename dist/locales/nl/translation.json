@@ -32,7 +32,10 @@
     "settings": "Instellingen",
     "admin": "Administrator",
     "prediction-updated": "Voorspelling aangepast",
-    "prediction-submited": "Voorspelling ingediend"
+    "prediction-submited": "Voorspelling ingediend",
+    "dirver-already-selected": "Piloot is reeds geselecteerd",
+    "dirver-set-to-finish-race": "Piloot staat in top 10 race finish",
+    "required": "Mag niet leeg zijn"
   },
   "result": {
     "qualifying-result": "Resultaat kwalificaties",
