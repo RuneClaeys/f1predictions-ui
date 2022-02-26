@@ -37,7 +37,7 @@ const List = ({ grandPrix, upcomming = false }) => {
                 return (
                     <ListGroup.Item key={gp.id} as="li" className="d-flex justify-content-between align-items-start p-0">
                         <NavLink
-                            to={!upcomming ? '/result/' + gp.id : `/prediction/` + gp.id}
+                            to={!upcomming ? '/result/' + gp.id : gp.diff <= 1 ? `/prediction/` + gp.id : ''}
                             className="d-flex align-items-center w-100 text-decoration-none text-black px-2"
                         >
                             <strong className="text-nowrap p-2">{gp.event}</strong>

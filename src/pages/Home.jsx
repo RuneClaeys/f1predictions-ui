@@ -19,7 +19,11 @@ const Home = () => {
         () => ({
             ...overview,
             grand_prix: overview.grand_prix
-                .map((gp) => ({ ...gp, qualifying_start_timestamp: new Date(gp.qualifying_start_timestamp) }))
+                .map((gp) => ({
+                    ...gp,
+                    qualifying_start_timestamp: new Date(gp.qualifying_start_timestamp),
+                    diff: differenceInDays(new Date(gp.qualifying_start_timestamp), new Date()),
+                }))
                 .sort((a, b) => a.qualifying_start_timestamp - b.qualifying_start_timestamp),
         }),
         [overview],
@@ -38,15 +42,11 @@ const Home = () => {
     }, [OVERVIEW]);
 
     const showcaseGP = useMemo(() => {
-        if (nextGP && differenceInDays(nextGP.qualifying_start_timestamp, new Date()) <= 1) {
+        if (nextGP?.diff <= 1) {
             return nextGP;
         }
         return prevGP;
     }, [prevGP, nextGP]);
-
-    useEffect(() => {
-        console.log(nextGP);
-    }, [nextGP]);
 
     return (
         <div gap={4} className="home">
@@ -58,7 +58,7 @@ const Home = () => {
                 <TotalPoints results={overview} loading={loading} bg="secondary" />
             </div>
             <div className="home__history">
-                <GrandPrixHistory overview={overview} loading={loading} />
+                <GrandPrixHistory overview={OVERVIEW} loading={loading} />
             </div>
         </div>
     );

@@ -16,6 +16,7 @@ import QualifyingForm from '../components/GeneralForm/QualifyingForm';
 import RaceForm from '../components/GeneralForm/RaceForm';
 import ExtraForm from '../components/GeneralForm/ExtraForm';
 import { useTranslation } from 'react-i18next';
+import { differenceInDays } from 'date-fns';
 
 const PredictionForm = () => {
     const { t } = useTranslation();
@@ -40,6 +41,9 @@ const PredictionForm = () => {
                 },
             });
             push(`/`);
+        }
+        if (grandPrix && differenceInDays(grandPrix.qualifying_start_timestamp, new Date()) > 1) {
+            push('/');
         }
     }, [grandPrix]);
 
@@ -134,11 +138,31 @@ const PredictionForm = () => {
                             }}
                         >
                             {stepIndex === 0 && (
-                                <QualifyingForm handleChange={handleChange} errors={errors} values={values} disabled={loading} />
+                                <QualifyingForm
+                                    grandPrix={grandPrix}
+                                    handleChange={handleChange}
+                                    errors={errors}
+                                    values={values}
+                                    disabled={loading}
+                                />
                             )}
-                            {stepIndex === 1 && <RaceForm handleChange={handleChange} errors={errors} values={values} disabled={loading} />}
+                            {stepIndex === 1 && (
+                                <RaceForm
+                                    grandPrix={grandPrix}
+                                    handleChange={handleChange}
+                                    errors={errors}
+                                    values={values}
+                                    disabled={loading}
+                                />
+                            )}
                             {stepIndex === 2 && (
-                                <ExtraForm handleChange={handleChange} errors={errors} values={values} disabled={loading} />
+                                <ExtraForm
+                                    grandPrix={grandPrix}
+                                    handleChange={handleChange}
+                                    errors={errors}
+                                    values={values}
+                                    disabled={loading}
+                                />
                             )}
 
                             <div className="d-flex py-3 w-10 position-sticky bg-white gap-4" style={{ bottom: 0 }}>
