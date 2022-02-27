@@ -46,7 +46,7 @@ const App = () => {
             await fetch(API_DRIVERS).then((drivers) =>
                 dispatch({
                     type: 'SET_DRIVERS',
-                    payload: drivers.sort((a, b) => a.team.name.localeCompare(b.team.name)),
+                    payload: drivers.sort((a, b) => a.first_name.localeCompare(b.first_name)),
                 }),
             );
             await fetch(API_SEASONS).then((seasons) => {
