@@ -73,16 +73,16 @@ const GrandPrixHistory = ({ overview, loading }) => {
         <div>
             {loading ? (
                 <>
-                    <h5 className="my-3">{t('home.upcomming')}</h5>
+                    <h5 className="mb-3">{t('home.upcomming')}</h5>
                     <LoadingList />
-                    <h5 className="mb-3">{t('home.history')}</h5>
+                    <h5 className="my-3">{t('home.history')}</h5>
                     <LoadingList />
                 </>
             ) : (
                 <>
-                    {upcommingGPs.length > 0 && <h5 className="my-3">{t('home.upcomming')}</h5>}
+                    {upcommingGPs.length > 0 && <h5 className="mb-3">{t('home.upcomming')}</h5>}
                     <List grandPrix={upcommingGPs || []} upcomming />
-                    {historyGPs.length > 0 && <h5 className="mb-3">{t('home.history')}</h5>}
+                    {historyGPs.length > 0 && <h5 className="my-3">{t('home.history')}</h5>}
                     <List grandPrix={historyGPs || []} />{' '}
                 </>
             )}

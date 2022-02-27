@@ -4,10 +4,12 @@ import Form from 'react-bootstrap/Form';
 import { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useStore } from '../core/hooks/useStore';
 
 const Settings = () => {
     const { push } = useHistory();
     const { t, i18n } = useTranslation();
+    const { dispatch } = useStore();
 
     const logout = useCallback(() => {
         caches
@@ -20,6 +22,7 @@ const Settings = () => {
                 }
             })
             .finally(() => {
+                dispatch({ type: 'SET_ACCESS_TOKEN', payload: null });
                 localStorage.removeItem('access_token');
                 push('/signin');
             });

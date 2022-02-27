@@ -1,6 +1,12 @@
 $theme-colors: (
-   'primary': #e10600,
-   'secondary': #1f1f27,
+    'primary': #e10600,
+    'secondary': #1f1f27,
 );
 
 @import '../node_modules/bootstrap/scss/bootstrap';
+
+.btn .btn-link {
+    &:focus {
+        box-shadow: none;
+    }
+}
