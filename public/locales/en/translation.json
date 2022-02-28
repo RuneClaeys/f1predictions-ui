@@ -1,56 +1,56 @@
 {
-  "global": {
-    "back": "Back",
-    "choose-driver": "Choose a pilot",
-    "extra": "Extras",
-    "fastest-lap": "Fastest Lap",
-    "first-dnf": "First dnf",
-    "next": "Next",
-    "other": "Others",
-    "position": "Position",
-    "points": "Points",
-    "qualifying": "Qualifications",
-    "race": "Race",
-    "save": "Save",
-    "total": "Total",
-    "season-start-description": "When te season is about to start, you'll be able to submit your prediction for the next gp here!",
-    "season-start-title": "The 2022 is season starting soon",
-    "admin": "Administrator",
-    "home": "Overview",
-    "leaderboard": "Rankings",
-    "settings": "Settings",
-    "prediction-submited": "Prediction submitted",
-    "prediction-updated": "Prediction adjusted",
-    "dirver-already-selected": "Driver is already selected",
-    "dirver-set-to-finish-race": "Driver is in top 10 race finish",
-    "required": "Can't be empty"
-  },
-  "home": {
-    "edit-prediction": "Adjust prediction",
-    "enter-prediction": "Add prediction",
-    "history": "Past GP",
-    "passed-gp": "The {{name}} is over! \nSoon you will be able to view your results!",
-    "passed-gp-and-result": "The {{name}} is over! \nView your results now!",
-    "quali": "Quali",
-    "season-total": "Your score",
-    "show-results": "Show results",
-    "upcomming": "Next GP",
-    "upcomming-gp": "The next GP is the {{name}}, who will win? \nSubmit your prediction before"
-  },
-  "leaderboard": {
-    "player": "Player"
-  },
-  "result": {
-    "other-result": "Extras",
-    "prediction": "Preditcion",
-    "qualifying-result": "Qualifying result",
-    "race-result": "Race result",
-    "result": "Result"
-  },
-  "settings": {
-    "account": "Account",
-    "application": "Application settings",
-    "language": "Language",
-    "log-out": "Logout"
-  }
+    "global": {
+        "back": "Back",
+        "choose-driver": "Choose a pilot",
+        "extra": "Extras",
+        "fastest-lap": "Fastest Lap",
+        "first-dnf": "First dnf",
+        "next": "Next",
+        "other": "Others",
+        "position": "Position",
+        "points": "Points",
+        "qualifying": "Qualifications",
+        "race": "Race",
+        "save": "Save",
+        "total": "Total",
+        "season-start-description": "When te season is about to start, you'll be able to submit your prediction for the next gp here!",
+        "season-start-title": "The 2022 is season starting soon",
+        "admin": "Administrator",
+        "home": "Overview",
+        "leaderboard": "Rankings",
+        "settings": "Settings",
+        "prediction-submited": "Prediction submitted",
+        "prediction-updated": "Prediction adjusted",
+        "dirver-already-selected": "Driver is already selected",
+        "dirver-set-to-finish-race": "Driver is in top 10 race finish",
+        "required": "Can't be empty"
+    },
+    "home": {
+        "edit-prediction": "Adjust prediction",
+        "enter-prediction": "Add prediction",
+        "history": "Past GP",
+        "passed-gp": "The {{name}} is over! \nSoon you will be able to view your results!",
+        "passed-gp-and-result": "The {{name}} is over! \nView your results now!",
+        "quali": "Quali",
+        "season-total": "Your score",
+        "show-results": "Show results",
+        "upcomming": "Next GP",
+        "upcomming-gp": "The next GP is the {{name}}, who will win? \nSubmit your prediction before"
+    },
+    "leaderboard": {
+        "player": "Player"
+    },
+    "result": {
+        "other-result": "Extras",
+        "prediction": "Prediction",
+        "qualifying-result": "Qualifying result",
+        "race-result": "Race result",
+        "result": "Result"
+    },
+    "settings": {
+        "account": "Account",
+        "application": "Application settings",
+        "language": "Language",
+        "log-out": "Logout"
+    }
 }
