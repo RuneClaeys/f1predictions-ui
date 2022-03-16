@@ -42,7 +42,7 @@ const Home = () => {
     }, [OVERVIEW]);
 
     const showcaseGP = useMemo(() => {
-        if (nextGP?.diff <= 1) {
+        if (nextGP?.diff <= 3) {
             return nextGP;
         }
         return prevGP;
