@@ -42,7 +42,7 @@ const PredictionForm = () => {
             });
             push(`/`);
         }
-        if (grandPrix && differenceInDays(grandPrix.qualifying_start_timestamp, new Date()) > 1) {
+        if (grandPrix && differenceInDays(grandPrix.qualifying_start_timestamp, new Date()) > 3) {
             push('/');
         }
     }, [grandPrix]);
