@@ -2,7 +2,7 @@
   "home": {
     "season-total": "Jouw score",
     "upcomming-gp": "De volgende gp is de {{name}}, wie gaat er winnen? Dien uw voorspelling in voor ",
-    "passed-gp": "De {{name}} is voorbij! Binnenkort kun je jouw resultaten bekijken!",
+    "passed-gp": "Binnenkort kun je jouw resultaten bekijken!",
     "passed-gp-and-result": "De {{name}} is voorbij! Bekijk nu jouw resultaten!",
     "enter-prediction": "Voorspelling toevoegen",
     "edit-prediction": "Voorspelling aanpassen",
