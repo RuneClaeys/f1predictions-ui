@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
-import { addHours, differenceInDays, subHours } from 'date-fns';
+import React, { useEffect, useMemo } from 'react';
+import Stack from 'react-bootstrap/Stack';
+import { differenceInDays, fromUnixTime } from 'date-fns';
 
 import { useGet } from '../core/hooks/useGet';
 import { API_RESULTS } from '../core/endpoints/endpoints';
@@ -30,14 +31,13 @@ const Home = () => {
 
     const prevGP = useMemo(() => {
         const dates = OVERVIEW.grand_prix
-            .filter((gp) => gp.qualifying_start_timestamp <= addHours(new Date(), 1))
+            .filter((gp) => gp.qualifying_start_timestamp < new Date())
             .sort((a, b) => a.qualifying_start_timestamp - b.qualifying_start_timestamp);
         return dates[dates.length - 1];
     }, [OVERVIEW]);
 
     const nextGP = useMemo(() => {
-        const dates = OVERVIEW.grand_prix.filter((gp) => subHours(gp.qualifying_start_timestamp, 1) > new Date());
-        console.log(dates);
+        const dates = OVERVIEW.grand_prix.filter((gp) => gp.qualifying_start_timestamp > new Date());
         return dates?.[0];
     }, [OVERVIEW]);
 
