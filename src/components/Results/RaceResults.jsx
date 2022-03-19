@@ -7,7 +7,11 @@ const RaceResults = ({ grandPrix, open }) => {
         () =>
             grandPrix?.user_prediction?.prediction_entries
                 ?.filter((prediction) => prediction.name.startsWith('RACE'))
-                ?.sort((a, b) => a.name.localeCompare(b.name)),
+                ?.sort((a, b) => {
+                    const raceNumberA = +a?.name?.split('_')[1];
+                    const raceNumberB = +b?.name?.split('_')[1];
+                    return raceNumberA < raceNumberB ? -1 : 1;
+                }),
         [grandPrix],
     );
 
@@ -15,7 +19,11 @@ const RaceResults = ({ grandPrix, open }) => {
         () =>
             grandPrix?.result?.result_entries
                 ?.filter((result) => result.name.startsWith('RACE'))
-                ?.sort((a, b) => a.name.localeCompare(b.name)),
+                ?.sort((a, b) => {
+                    const raceNumberA = +a?.name?.split('_')[1];
+                    const raceNumberB = +b?.name?.split('_')[1];
+                    return raceNumberA < raceNumberB ? -1 : 1;
+                }),
         [grandPrix],
     );
     return (

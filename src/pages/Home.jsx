@@ -22,6 +22,7 @@ const Home = () => {
                 .map((gp) => ({
                     ...gp,
                     qualifying_start_timestamp: new Date(gp.qualifying_start_timestamp),
+                    race_start_timestamp: new Date(gp.race_start_timestamp),
                     diff: differenceInDays(new Date(gp.qualifying_start_timestamp), new Date()),
                 }))
                 .sort((a, b) => a.qualifying_start_timestamp - b.qualifying_start_timestamp),
