@@ -43,18 +43,26 @@ const OtherResults = ({ open, grandPrix }) => {
                         <tr>
                             <td className="p-2 text-nowrap">
                                 {firstDNF ? (
-                                    <span>
-                                        {firstDNF?.driver?.first_name.charAt(0)}. {firstDNF?.driver?.last_name}
-                                    </span>
+                                    firstDNF?.driver?.first_name ? (
+                                        <span>
+                                            {firstDNF?.driver?.first_name.charAt(0)}. {firstDNF?.driver?.last_name}
+                                        </span>
+                                    ) : (
+                                        t('global.none')
+                                    )
                                 ) : (
                                     <span>-</span>
                                 )}
                             </td>
                             <td className="p-2 text-nowrap">
                                 {firstDNFResult ? (
-                                    <span>
-                                        {firstDNFResult?.driver?.first_name.charAt(0)}. {firstDNFResult?.driver?.last_name}
-                                    </span>
+                                    firstDNFResult?.driver?.first_name ? (
+                                        <span>
+                                            {firstDNFResult?.driver?.first_name.charAt(0)}. {firstDNFResult?.driver?.last_name}
+                                        </span>
+                                    ) : (
+                                        t('global.none')
+                                    )
                                 ) : (
                                     <span>-</span>
                                 )}

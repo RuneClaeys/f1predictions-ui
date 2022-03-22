@@ -89,10 +89,7 @@ export default [
             .test('Unique', i18n.t('global.dirver-already-selected'), (value, options) => isUnique(value, options, 'RACE')),
     }),
     yup.object().shape({
-        FIRST_DNF: yup
-            .string()
-            .required(i18n.t('global.required'))
-            .test('isInRace', i18n.t('global.dirver-set-to-finish-race'), isNotInRace),
+        FIRST_DNF: yup.string().nullable().test('isInRace', i18n.t('global.dirver-set-to-finish-race'), isNotInRace),
         FASTEST_LAP: yup.string().required(i18n.t('global.required')),
     }),
 ];

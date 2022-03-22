@@ -44,7 +44,7 @@ const ExtraForm = ({ handleChange, errors, values, disabled, grandPrix }) => {
                     onChange={handleChange}
                     isInvalid={!!errors[`FIRST_DNF`]}
                 >
-                    <option>{t('global.choose-driver')}</option>
+                    <option value="">{t('global.choose-driver')}</option>
                     {drivers.map((driver) => {
                         return (
                             <option key={driver.id} value={driver.id}>

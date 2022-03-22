@@ -35,7 +35,8 @@
     "prediction-submited": "Voorspelling ingediend",
     "dirver-already-selected": "Piloot is reeds geselecteerd",
     "dirver-set-to-finish-race": "Piloot staat in top 10 race finish",
-    "required": "Mag niet leeg zijn"
+    "required": "Mag niet leeg zijn",
+    "none": "Geen"
   },
   "result": {
     "qualifying-result": "Resultaat kwalificaties",

@@ -23,7 +23,8 @@
     "prediction-updated": "Prediction adjusted",
     "dirver-already-selected": "Driver is already selected",
     "dirver-set-to-finish-race": "Driver is in top 10 race finish",
-    "required": "Can't be empty"
+    "required": "Can't be empty",
+    "none": "No"
   },
   "home": {
     "edit-prediction": "Adjust prediction",

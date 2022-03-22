@@ -64,7 +64,7 @@ const PredictionForm = () => {
     async function handleSubmitPrediction(prediction) {
         if (grandPrix?.user_prediction) {
             return await put(API_PREDICTIONS + `/${grandPrix.user_prediction.id}`, {
-                prediction_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value })),
+                prediction_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value || null })),
             }).then(() => {
                 push('/');
                 dispatch({
@@ -79,7 +79,7 @@ const PredictionForm = () => {
             });
         } else {
             return await post(API_GRAND_PRIX + `/${id}` + API_PREDICTIONS, {
-                prediction_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value })),
+                prediction_entries: Object.entries(prediction).map(([key, value]) => ({ name: key, driver_id: value || null })),
             }).then(() => {
                 push('/');
                 dispatch({
@@ -112,8 +112,11 @@ const PredictionForm = () => {
     const loading = useMemo(() => loadingGP || loadingCreate || loadingPut, [loadingGP, loadingCreate, loadingPut]);
 
     const initialValues = useMemo(() => {
-        if (!grandPrix?.user_prediction) return {};
-        return grandPrix.user_prediction.prediction_entries.reduce((acc, cur) => ({ ...acc, [cur.name]: cur.driver.id }), {});
+        if (!grandPrix?.user_prediction)
+            return {
+                FIRST_DNF: null,
+            };
+        return grandPrix.user_prediction.prediction_entries.reduce((acc, cur) => ({ ...acc, [cur.name]: cur.driver?.id }), {});
     }, [grandPrix]);
 
     return (

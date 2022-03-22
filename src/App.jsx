@@ -71,7 +71,7 @@ const App = () => {
         <Suspense fallback={<Fallback />}>
             <div className="app">
                 <Stack style={{ width: '100%' }}>
-                    <div className="app__navbar sticky-top">
+                    <div className="app__navbar sticky-top" style={{ zIndex: 9999 }}>
                         <Navbar />
                     </div>
                     <Container className="py-3" style={{ minHeight: `calc(100vh - 100px)` }}>
