@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { differenceInDays, subHours } from 'date-fns';
+import { differenceInDays } from 'date-fns';
 
 import { useGet } from '../core/hooks/useGet';
 import { API_RESULTS } from '../core/endpoints/endpoints';
@@ -32,9 +32,7 @@ const Home = () => {
     );
 
     const activeGP = useMemo(() => {
-        return OVERVIEW.grand_prix.find(
-            (gp) => new Date() < gp.race_start_timestamp && new Date() > subHours(gp.qualifying_start_timestamp, 1),
-        );
+        return OVERVIEW.grand_prix.find((gp) => new Date() < gp.race_start_timestamp && new Date() > gp.qualifying_start_timestamp);
     }, [OVERVIEW]);
 
     const upCommingGP = useMemo(() => {

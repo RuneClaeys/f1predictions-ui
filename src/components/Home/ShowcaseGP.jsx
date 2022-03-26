@@ -5,7 +5,6 @@ import Placeholder from 'react-bootstrap/Placeholder';
 import { useHistory } from 'react-router';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
-import { subHours } from 'date-fns/esm';
 import { nlBE } from 'date-fns/locale';
 
 const ShowcaseGP = ({ showcaseGP, isUpcomming, isActive, loading }) => {
@@ -43,10 +42,7 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, isActive, loading }) => {
                     ) : isUpcomming ? (
                         <Card.Text>
                             {t('home.upcomming-gp', { name: showcaseGP.name })}
-                            <strong className="ms-1">
-                                {format(subHours(new Date(showcaseGP.qualifying_start_timestamp), 1), 'dd/MM HH:mm')}
-                            </strong>
-                            !
+                            <strong className="ms-1">{format(new Date(showcaseGP.qualifying_start_timestamp), 'dd/MM HH:mm')}</strong>!
                         </Card.Text>
                     ) : (
                         <Card.Text>{t('home.passed-gp-and-result', { name: showcaseGP.name })}</Card.Text>
