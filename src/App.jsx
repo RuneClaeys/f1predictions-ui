@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useCallback, useMemo } from 'react';
 import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
 import Stack from 'react-bootstrap/Stack';
@@ -13,7 +13,6 @@ import { useStore } from './core/hooks/useStore';
 import { useGet } from './core/hooks/useGet';
 import { useEffect } from 'react';
 import { API_DRIVERS, API_GRAND_PRIX, API_SEASONS, API_USER_INFO } from './core/endpoints/endpoints';
-import { useTranslation } from 'react-i18next';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const SignIn = React.lazy(() => import('./pages/SignIn'));
@@ -38,17 +37,12 @@ const App = () => {
     const { state, dispatch } = useStore();
     const { fetch } = useGet(null, { initialFetch: false });
 
-    const { current_season, accessToken, user } = state;
+    const { current_season, accessToken, user, driver_sorting } = state;
 
     useEffect(async () => {
         if (accessToken) {
             await fetch(API_USER_INFO).then((user) => dispatch({ type: 'SET_USER', payload: user }));
-            await fetch(API_DRIVERS).then((drivers) =>
-                dispatch({
-                    type: 'SET_DRIVERS',
-                    payload: drivers.sort((a, b) => a.first_name.localeCompare(b.first_name)),
-                }),
-            );
+            await fetch(API_DRIVERS).then((drivers) => dispatch({ type: 'SET_DRIVERS', payload: drivers }));
             await fetch(API_SEASONS).then((seasons) => {
                 dispatch({ type: 'SET_SEASONS', payload: seasons });
                 dispatch({ type: 'SET_CURRENT_SEASON', payload: seasons.find((season) => season.year == new Date().getFullYear()) });

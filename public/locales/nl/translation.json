@@ -52,6 +52,7 @@
     "application": "Applicatie instellingen",
     "account": "Account",
     "log-out": "Afmelden",
-    "language": "Taal"
+    "language": "Taal",
+    "driver-sorting": "Drivers sorteren op"
   }
 }

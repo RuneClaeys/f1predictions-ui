@@ -30,7 +30,7 @@ const QualifyingForm = ({ handleChange, errors, values, disabled, grandPrix }) =
                             {drivers.map((driver) => {
                                 return (
                                     <option key={driver.id} value={driver.id}>
-                                        [{driver.team.short_name}] - {`${driver.first_name} ${driver.last_name}`}
+                                        {driver.display_key}
                                     </option>
                                 );
                             })}

@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo } from 'react';
-import Stack from 'react-bootstrap/Stack';
-import { differenceInDays, fromUnixTime } from 'date-fns';
+import React, { useMemo } from 'react';
+import { differenceInDays } from 'date-fns';
 
 import { useGet } from '../core/hooks/useGet';
 import { API_RESULTS } from '../core/endpoints/endpoints';
@@ -52,14 +51,14 @@ const Home = () => {
     return (
         <div gap={4} className="home">
             <div className="home__showcase">
-                <ShowcaseGP showcaseGP={showcaseGP} isUpcomming={showcaseGP?.id === nextGP?.id} loading={loading} />
+                <ShowcaseGP showcaseGP={showcaseGP} isUpcomming={showcaseGP?.id === nextGP?.id} loading={loading || !overview} />
             </div>
             <div className="home__total">
                 <h5 className="mb-3">{t('home.season-total')}</h5>
-                <TotalPoints results={overview} loading={loading} bg="secondary" />
+                <TotalPoints results={overview} loading={loading || !overview} bg="secondary" />
             </div>
             <div className="home__history">
-                <GrandPrixHistory overview={OVERVIEW} loading={loading} />
+                <GrandPrixHistory overview={OVERVIEW} loading={loading || !overview} />
             </div>
         </div>
     );

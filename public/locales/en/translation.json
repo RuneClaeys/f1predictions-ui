@@ -52,6 +52,7 @@
     "account": "Account",
     "application": "Application settings",
     "language": "Language",
-    "log-out": "Logout"
+    "log-out": "Logout",
+    "driver-sorting": "Sort drivers by"
   }
 }
