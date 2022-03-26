@@ -36,7 +36,8 @@
     "season-total": "Your score",
     "show-results": "Show results",
     "upcomming": "Next GP",
-    "upcomming-gp": "The next GP is the {{name}}, who will win? \nSubmit your prediction before"
+    "upcomming-gp": "The next GP is the {{name}}, who will win? \nSubmit your prediction before",
+    "show-prediction": "View prediction"
   },
   "leaderboard": {
     "player": "Player"

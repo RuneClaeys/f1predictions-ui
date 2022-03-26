@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-import { useMemo } from 'react';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Placeholder from 'react-bootstrap/Placeholder';
@@ -64,19 +63,8 @@ const List = ({ grandPrix, upcomming = false }) => {
     );
 };
 
-const GrandPrixHistory = ({ overview, loading }) => {
-    const { t } = useTranslation();
-    const historyGPs = useMemo(() => {
-        return overview.grand_prix
-            .filter((gp) => gp.qualifying_start_timestamp < new Date())
-            .sort((a, b) => a.qualifying_start_timestamp - b.qualifying_start_timestamp);
-    }, [overview]);
-
-    const upcommingGPs = useMemo(() => {
-        return overview.grand_prix
-            .filter((gp) => gp.qualifying_start_timestamp > new Date())
-            .sort((a, b) => a.qualifying_start_timestamp - b.qualifying_start_timestamp);
-    }, [overview]);
+const GrandPrixHistory = ({ prevGP, nextGP, loading }) => {
+    const { t, i18n } = useTranslation();
 
     return (
         <div>
@@ -89,10 +77,10 @@ const GrandPrixHistory = ({ overview, loading }) => {
                 </>
             ) : (
                 <>
-                    {upcommingGPs.length > 0 && <h5 className="mb-3">{t('home.upcomming')}</h5>}
-                    <List grandPrix={upcommingGPs || []} upcomming />
-                    {historyGPs.length > 0 && <h5 className="my-3">{t('home.history')}</h5>}
-                    <List grandPrix={historyGPs || []} />{' '}
+                    {nextGP?.length > 0 && <h5 className="mb-3">{t('home.upcomming')}</h5>}
+                    <List grandPrix={nextGP || []} upcomming />
+                    {prevGP?.length > 0 && <h5 className="my-3">{t('home.history')}</h5>}
+                    <List grandPrix={prevGP || []} />{' '}
                 </>
             )}
         </div>

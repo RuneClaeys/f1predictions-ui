@@ -6,8 +6,9 @@ import { useHistory } from 'react-router';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 import { subHours } from 'date-fns/esm';
+import { nlBE } from 'date-fns/locale';
 
-const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
+const ShowcaseGP = ({ showcaseGP, isUpcomming, isActive, loading }) => {
     const { push } = useHistory();
     const { t } = useTranslation();
 
@@ -29,7 +30,17 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
                 <Card.Body>
                     <Card.Title>{showcaseGP.name}</Card.Title>
 
-                    {isUpcomming ? (
+                    {isActive ? (
+                        <>
+                            <Card.Text className="mb-1">{t('home.passed-gp', { name: showcaseGP.name })}</Card.Text>
+                            <div className="d-flex gap-5">
+                                <p>
+                                    {t('home.quali')}: {format(showcaseGP.qualifying_start_timestamp, 'EE dd/MM HH:mm', { locale: nlBE })}
+                                </p>
+                                <p>Race: {format(showcaseGP.race_start_timestamp, 'EE dd/MM HH:mm', { locale: nlBE })}</p>{' '}
+                            </div>
+                        </>
+                    ) : isUpcomming ? (
                         <Card.Text>
                             {t('home.upcomming-gp', { name: showcaseGP.name })}
                             <strong className="ms-1">
@@ -37,26 +48,28 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, loading }) => {
                             </strong>
                             !
                         </Card.Text>
-                    ) : showcaseGP?.user_prediction && showcaseGP?.result_id ? (
-                        <Card.Text>{t('home.passed-gp-and-result', { name: showcaseGP.name })}</Card.Text>
                     ) : (
-                        <Card.Text>{t('home.passed-gp', { name: showcaseGP.name })}</Card.Text>
+                        <Card.Text>{t('home.passed-gp-and-result', { name: showcaseGP.name })}</Card.Text>
                     )}
 
-                    {isUpcomming && !showcaseGP?.user_prediction ? (
-                        <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
-                            {t('home.enter-prediction')}
+                    {isActive ? (
+                        <Button onClick={() => push('/result/' + showcaseGP.id)} variant="primary" type="button">
+                            {t('home.show-prediction')}
                         </Button>
-                    ) : !!showcaseGP?.user_prediction && new Date(showcaseGP.qualifying_start_timestamp) > new Date() ? (
-                        <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
-                            {t('home.edit-prediction')}
-                        </Button>
-                    ) : (
-                        showcaseGP?.result_id && (
-                            <Button onClick={() => push('/result/' + showcaseGP.id)} variant="primary" type="button">
-                                {t('home.show-results')}
+                    ) : isUpcomming ? (
+                        showcaseGP?.user_prediction ? (
+                            <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
+                                {t('home.edit-prediction')}
+                            </Button>
+                        ) : (
+                            <Button onClick={() => push('/prediction/' + showcaseGP.id)} variant="primary" type="button">
+                                {t('home.enter-prediction')}
                             </Button>
                         )
+                    ) : (
+                        <Button onClick={() => push('/result/' + showcaseGP.id)} variant="primary" type="button">
+                            {t('home.show-results')}
+                        </Button>
                     )}
                 </Card.Body>
             ) : (
