@@ -47,8 +47,6 @@ const Home = () => {
         return OVERVIEW.grand_prix.filter((gp) => gp?.id !== activeGP?.id).filter((gp) => gp.race_start_timestamp > new Date());
     }, [OVERVIEW, activeGP]);
 
-    console.log(activeGP, upCommingGP, prevGP, nextGP);
-
     const showcaseGP = useMemo(() => {
         if (activeGP) return activeGP;
         if (upCommingGP?.diff < 3) return upCommingGP;
