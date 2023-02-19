@@ -1,0 +1,19 @@
+{
+   "semi": true,
+   "printWidth": 140,
+   "tabWidth": 3,
+   "arrowParens": "always",
+   "singleQuote": true,
+   "bracketSpacing": true,
+   "endOfLine": "crlf",
+   "overrides": [
+      {
+         "files": "*.json",
+         "options": {
+            "printWidth": 280,
+            "parser": "json",
+            "singleQuote": false
+         }
+      }
+   ]
+}
