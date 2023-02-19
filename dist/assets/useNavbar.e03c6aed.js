@@ -1,1 +1,0 @@
-import{r as a}from"./vendor.2d83aa44.js";import{a as t}from"./index.f45912df.js";function f(e){const{dispatch:r}=t();a.exports.useEffect(()=>(r({type:"SET_NAVBAR",payload:e}),()=>{r({type:"RESET_NAVBAR"})}),[e])}export{f as u};
