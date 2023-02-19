@@ -11,7 +11,7 @@ import { useStore } from '../../core/hooks/useStore';
 const ShowcaseGP = ({ showcaseGP, isUpcomming, isActive, loading }) => {
    const { push } = useHistory();
    const { t } = useTranslation();
-   const { current_season } = useStore();
+   const { current_season } = useStore().state;
 
    return (
       <Card>
@@ -72,7 +72,7 @@ const ShowcaseGP = ({ showcaseGP, isUpcomming, isActive, loading }) => {
             </Card.Body>
          ) : (
             <Card.Body>
-               <Card.Title>{t('global.season-start-title', { year: current_season?.year })}</Card.Title>
+               <Card.Title>{t('global.season-start-title', { year: current_season?.year || '' })}</Card.Title>
 
                <Card.Text>{t('global.season-start-description')}</Card.Text>
             </Card.Body>
