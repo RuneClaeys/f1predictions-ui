@@ -74,13 +74,7 @@ const AddGrandPrix = () => {
                   name="qualifying_start_timestamp"
                   required
                   disabled={loading}
-                  onChange={(e) => {
-                     setGP({
-                        ...gp,
-                        qualifying_start_timestamp: e.target.value,
-                        race_start_timestamp: gp.race_start_timestamp ? gp.race_start_timestamp : e.target.value,
-                     });
-                  }}
+                  onChange={(e) => setGP({ ...gp, qualifying_start_timestamp: e.target.value })}
                />
             </label>
 
@@ -93,13 +87,7 @@ const AddGrandPrix = () => {
                   name="race_start_timestamp"
                   required
                   disabled={loading}
-                  onChange={(e) =>
-                     setGP({
-                        ...gp,
-                        race_start_timestamp: e.target.value,
-                        qualifying_start_timestamp: gp.qualifying_start_timestamp ? gp.qualifying_start_timestamp : e.target.value,
-                     })
-                  }
+                  onChange={(e) => setGP({ ...gp, race_start_timestamp: e.target.value })}
                />
             </label>
 
