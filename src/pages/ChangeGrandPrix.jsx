@@ -23,8 +23,8 @@ const ChangeGrandPrix = () => {
       if (data) {
          setGP({
             ...data,
-            race_start_timestamp: format(new Date(data.race_start_timestamp), "yyyy-MM-dd'T'hh:mm"),
-            qualifying_start_timestamp: format(new Date(data.qualifying_start_timestamp), "yyyy-MM-dd'T'hh:mm"),
+            race_start_timestamp: format(new Date(data.race_start_timestamp), "yyyy-MM-dd'T'HH:mm"),
+            qualifying_start_timestamp: format(new Date(data.qualifying_start_timestamp), "yyyy-MM-dd'T'HH:mm"),
          });
       }
    }, [data]);
