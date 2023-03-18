@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { format } from 'date-fns';
 import { useDelete } from '../core/hooks/useDelete';
+import { useGet } from '../core/hooks/useGet';
 import { API_GRAND_PRIX, API_SEASONS } from '../core/endpoints/endpoints';
 
 const Admin = () => {
@@ -22,6 +23,7 @@ const Admin = () => {
    useNavbar(navBarOptions);
 
    const { fetch, loading } = useDelete();
+   const { fetch: fetchGet } = useGet(null, { initialFetch: false });
 
    async function deleteGP(gp) {
       if (confirm('Delete ' + gp.name)) {
@@ -64,7 +66,7 @@ const Admin = () => {
             <div>
                <div className="d-flex justify-content-between">
                   <h5>Change GP's</h5>
-                  <button onClick={() => push('/admin/add-gp')} type="button" class="btn btn-link">
+                  <button onClick={() => push('/admin/add-gp')} type="button" className="btn btn-link">
                      Voeg GP toe
                   </button>
                </div>

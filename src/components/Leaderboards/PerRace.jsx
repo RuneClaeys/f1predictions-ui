@@ -6,6 +6,7 @@ import { useStore } from '../../core/hooks/useStore';
 import { API_SEASONS } from '../../core/endpoints/endpoints';
 import Placeholder from 'react-bootstrap/Placeholder';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const PerRace = () => {
    const { current_season, grandPrix } = useStore().state;
@@ -72,7 +73,15 @@ const PerRace = () => {
                         {(detail?.grandprix || []).map((gp) => {
                            return (
                               <td className="text-center" key={gp.id}>
-                                 {gp.total_points || '-'}
+                                 {new Date(gp.qualifying_start_timestamp).getTime() < new Date().getTime() ? (
+                                    <Link
+                                       to={`/result/${gp.id}?user_id=${detail.user_id}&user_name=${detail.first_name} ${detail.last_name}`}
+                                    >
+                                       {gp.total_points || '-'}
+                                    </Link>
+                                 ) : (
+                                    gp.total_points || '-'
+                                 )}
                               </td>
                            );
                         })}

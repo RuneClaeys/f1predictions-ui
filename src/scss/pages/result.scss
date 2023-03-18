@@ -1,36 +1,36 @@
 .result {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
-    grid-template-areas:
-        'total'
-        'quali'
-        'race'
-        'other';
-    gap: 1rem;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: repeat(4, auto);
+   grid-template-areas:
+      'total'
+      'quali'
+      'race'
+      'other';
+   gap: 1rem;
 
-    &__total {
-        grid-area: total;
-    }
+   &__total {
+      grid-area: total;
+   }
 
-    &__quali {
-        grid-area: quali;
-    }
+   &__quali {
+      grid-area: quali;
+   }
 
-    &__race {
-        grid-area: race;
-    }
+   &__race {
+      grid-area: race;
+   }
 
-    &__other {
-        grid-area: other;
-    }
+   &__other {
+      grid-area: other;
+   }
 
-    @include media-breakpoint-up(lg) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto repeat(2, auto);
-        grid-template-areas:
-            'total .'
-            'quali quali'
-            'race other';
-    }
+   @include media-breakpoint-up(lg) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto repeat(2, auto);
+      grid-template-areas:
+         'total .'
+         'quali quali'
+         'race other';
+   }
 }
